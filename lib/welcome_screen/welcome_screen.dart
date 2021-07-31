@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../authentication_screen/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   final String _welcomeTitle = 'Welcome To\nNAME';
@@ -112,7 +113,10 @@ class WelcomeScreen extends StatelessWidget {
             Container(
                 margin: const EdgeInsets.only(top: 50.0),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                  },
                   child: Text(
                     'Get Started',
                     style: TextStyle(fontFamily: 'Montserrat', fontSize: 16),
