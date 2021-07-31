@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:going_out_planner/authentication_screen/login_screen.dart';
 
 class HomeScreenWidget extends StatefulWidget {
   const HomeScreenWidget({Key? key}) : super(key: key);

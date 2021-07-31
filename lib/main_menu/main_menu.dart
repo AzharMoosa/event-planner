@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:going_out_planner/events/events_screen.dart';
 import 'package:going_out_planner/home/home_screen.dart';
+import 'package:going_out_planner/search/search_screen.dart';
+import 'package:going_out_planner/settings/settings_screen.dart';
 
 class MainMenuWidget extends StatefulWidget {
   const MainMenuWidget({Key? key}) : super(key: key);
@@ -17,9 +20,9 @@ class _MainMenuState extends State<MainMenuWidget> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreenWidget(),
-    Text('Search'),
-    Text('Events'),
-    Text('Settings'),
+    SearchScreenWidget(),
+    EventsScreenWidget(),
+    SettingsScreenWidget()
   ];
 
   void _onItemTapped(int index) {
