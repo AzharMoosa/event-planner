@@ -6,7 +6,9 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [Text('Sign Up')],
+          children: [
+            Text('Sign Up'),
+          ],
         ),
       ),
     );

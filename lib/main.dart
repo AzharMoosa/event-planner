@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-            backgroundColor: Color(0xffEEEEEE), fontFamily: 'Montserrat'),
+            scaffoldBackgroundColor: Color(0xffEEEEEE),
+            fontFamily: 'Montserrat'),
         home: WelcomeScreen());
   }
 }
