@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:going_out_planner/authentication_screen/login_screen.dart';
-import '../home/home_screen.dart';
+import 'package:going_out_planner/main_menu/main_menu.dart';
 
 class SignUpScreen extends StatelessWidget {
   final String _loginTitle = "SIGN UP";
@@ -216,7 +216,7 @@ class SignUpScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => HomeScreen()));
+                                builder: (context) => MainMenuWidget()));
                       },
                       child: Text(
                         'Sign Up'.toUpperCase(),
