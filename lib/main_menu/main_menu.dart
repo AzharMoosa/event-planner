@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:going_out_planner/events/add_events_screen.dart';
 import 'package:going_out_planner/events/events_screen.dart';
 import 'package:going_out_planner/home/home_screen.dart';
 import 'package:going_out_planner/search/search_screen.dart';
@@ -22,7 +23,7 @@ class _MainMenuState extends State<MainMenuWidget> {
     HomeScreenWidget(),
     SearchScreenWidget(),
     EventsScreenWidget(),
-    SettingsScreenWidget()
+    SettingsScreenWidget(),
   ];
 
   void _onItemTapped(int index) {
@@ -47,7 +48,12 @@ class _MainMenuState extends State<MainMenuWidget> {
             child: Container(child: _widgetOptions.elementAt(_selectedIndex))),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Color(0xfff67280),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddEventsScreenWidget()));
+          },
           child: Icon(Icons.add, size: 30),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
