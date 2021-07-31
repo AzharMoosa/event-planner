@@ -90,7 +90,7 @@ class LoginScreen extends StatelessWidget {
                             vertical: 20.0, horizontal: 20.0)),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please Enter Email';
+                        return 'Please Enter Password';
                       }
                       return null;
                     },
