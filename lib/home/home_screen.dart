@@ -47,7 +47,115 @@ class _HomeScreenState extends State<HomeScreenWidget> {
           if (snapshot.hasError)
             return Center(child: Text('Error: ${snapshot.error}'));
           else
-            return Center(child: new Text('${snapshot.data!.firstName}'));
+            return SafeArea(
+                child: Container(
+                    margin: const EdgeInsets.only(top: 50, right: 50, left: 50),
+                    child: Column(
+                      children: [
+                        Container(
+                            margin: const EdgeInsets.only(left: 5),
+                            child: Column(
+                              children: [
+                                Row(children: [
+                                  Text('Welcome',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w300,
+                                          color: Color(0xff222831)))
+                                ]),
+                                Row(
+                                  children: [
+                                    Text(
+                                        snapshot.data!.firstName +
+                                            " " +
+                                            snapshot.data!.lastName,
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w700,
+                                            color: Color(0xff3F72AF)))
+                                  ],
+                                ),
+                              ],
+                            )),
+                        Container(
+                          margin: const EdgeInsets.only(top: 40),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(right: 5),
+                                child: Icon(Icons.local_fire_department,
+                                    color: Color(0xffF67280), size: 30),
+                              ),
+                              Text(
+                                'Popular',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Color(0xffF67280),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700),
+                              )
+                            ],
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                                margin: const EdgeInsets.only(top: 20),
+                                width: 320,
+                                height: 150,
+                                child: Card(
+                                  child: Container(
+                                    width: 320,
+                                    height: 108,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(15.0),
+                                        image: DecorationImage(
+                                            colorFilter: new ColorFilter.mode(
+                                                Colors.black.withOpacity(0.5),
+                                                BlendMode.dstATop),
+                                            fit: BoxFit.cover,
+                                            image: AssetImage(
+                                                'images/card-bg-1.jpg'))),
+                                    child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Column(children: [
+                                          Row(
+                                            children: [
+                                              Text('Name',
+                                                  textAlign: TextAlign.start,
+                                                  style: TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: Color(0xff000000)))
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Flexible(
+                                                  child: Container(
+                                                margin: const EdgeInsets.only(
+                                                    top: 10),
+                                                child: Text(
+                                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mollis vitae quam at lobortis. Aliquam blandit metus in tortor.',
+                                                    textAlign: TextAlign.start,
+                                                    style: TextStyle(
+                                                        fontSize: 13,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color:
+                                                            Color(0xff000000))),
+                                              ))
+                                            ],
+                                          )
+                                        ])),
+                                  ),
+                                ))
+                          ],
+                        )
+                      ],
+                    )));
         }
       },
     );
