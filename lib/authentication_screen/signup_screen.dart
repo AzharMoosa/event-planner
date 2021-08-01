@@ -213,10 +213,10 @@ class SignUpScreen extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {
                         // Check If Valid
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MainMenuWidget()));
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => MainMenuWidget()));
                       },
                       child: Text(
                         'Sign Up'.toUpperCase(),
@@ -253,7 +253,7 @@ class SignUpScreen extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  LoginScreen()))
+                                                  LoginScreenWidget()))
                                     })
                         ],
                       ),

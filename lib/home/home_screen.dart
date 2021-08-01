@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:going_out_planner/models/user_model.dart';
 
 class HomeScreenWidget extends StatefulWidget {
   const HomeScreenWidget({Key? key}) : super(key: key);

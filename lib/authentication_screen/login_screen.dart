@@ -1,10 +1,37 @@
+import 'dart:convert';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:going_out_planner/assets/constants.dart' as Constants;
 import 'package:going_out_planner/authentication_screen/signup_screen.dart';
+import 'package:going_out_planner/models/user_model.dart';
 import '../main_menu/main_menu.dart';
+import 'package:http/http.dart' as http;
 
-class LoginScreen extends StatelessWidget {
+class LoginScreenWidget extends StatefulWidget {
+  const LoginScreenWidget({Key? key}) : super(key: key);
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+Future<UserModel?> loginUser(String email, String password) async {
+  final Map data = {'email': email, 'password': password};
+  final response = await http.post(Uri.parse(Constants.API_URL_LOGIN),
+      headers: {"Content-Type": "application/json"}, body: jsonEncode(data));
+  if (response.statusCode == 200) {
+    final String responseString = response.body;
+    return userModelFromJson(responseString);
+  } else {
+    return null;
+  }
+}
+
+class _LoginScreenState extends State<LoginScreenWidget> {
   final String _loginTitle = "LOGIN";
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +65,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   child: TextFormField(
                     style: TextStyle(fontSize: 20),
+                    controller: emailController,
                     decoration: InputDecoration(
                         hintText: "Email",
                         fillColor: Color(0xFFD4D4D4),
@@ -73,6 +101,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   child: TextFormField(
                     style: TextStyle(fontSize: 20),
+                    controller: passwordController,
                     obscureText: true,
                     enableSuggestions: false,
                     autocorrect: false,
@@ -104,12 +133,21 @@ class LoginScreen extends StatelessWidget {
                 Container(
                     margin: const EdgeInsets.only(top: 50.0),
                     child: ElevatedButton(
-                      onPressed: () {
-                        // Check If Valid
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MainMenuWidget()));
+                      onPressed: () async {
+                        final String email = emailController.text;
+                        final String password = passwordController.text;
+
+                        final UserModel? user =
+                            await loginUser(email, password);
+
+                        if (user != null) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MainMenuWidget(
+                                        userModel: user,
+                                      )));
+                        }
                       },
                       child: Text(
                         'Login'.toUpperCase(),

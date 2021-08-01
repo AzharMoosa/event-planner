@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import '../authentication_screen/login_screen.dart';
+import '../assets/constants.dart' as Constants;
 
 class WelcomeScreen extends StatelessWidget {
-  final String _welcomeTitle = 'Welcome To\nNAME';
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -17,7 +16,7 @@ class WelcomeScreen extends StatelessWidget {
             Container(
                 margin: const EdgeInsets.only(top: 60.0),
                 child: Text(
-                  _welcomeTitle,
+                  Constants.WELCOME_TITLE,
                   style: TextStyle(
                       color: Color(0xff222831),
                       fontSize: 35,
@@ -114,8 +113,10 @@ class WelcomeScreen extends StatelessWidget {
                 margin: const EdgeInsets.only(top: 50.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => LoginScreenWidget()));
                   },
                   child: Text(
                     'Get Started',

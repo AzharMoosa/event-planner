@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:going_out_planner/events/add_events_screen.dart';
 import 'package:going_out_planner/events/events_screen.dart';
 import 'package:going_out_planner/home/home_screen.dart';
+import 'package:going_out_planner/models/user_model.dart';
 import 'package:going_out_planner/search/search_screen.dart';
 import 'package:going_out_planner/settings/settings_screen.dart';
 
 class MainMenuWidget extends StatefulWidget {
-  const MainMenuWidget({Key? key}) : super(key: key);
+  final UserModel userModel;
+
+  const MainMenuWidget({Key? key, required this.userModel}) : super(key: key);
 
   @override
   _MainMenuState createState() => _MainMenuState();
