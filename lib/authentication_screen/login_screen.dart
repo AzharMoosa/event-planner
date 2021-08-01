@@ -7,6 +7,7 @@ import 'package:going_out_planner/authentication_screen/signup_screen.dart';
 import 'package:going_out_planner/models/user_model.dart';
 import '../main_menu/main_menu.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreenWidget extends StatefulWidget {
   const LoginScreenWidget({Key? key}) : super(key: key);
@@ -141,12 +142,13 @@ class _LoginScreenState extends State<LoginScreenWidget> {
                             await loginUser(email, password);
 
                         if (user != null) {
+                          final prefs = await SharedPreferences.getInstance();
+                          prefs.setString("token", user.token);
+                          prefs.setString("id", user.id);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MainMenuWidget(
-                                        userModel: user,
-                                      )));
+                                  builder: (context) => MainMenuWidget()));
                         }
                       },
                       child: Text(

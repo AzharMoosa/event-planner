@@ -7,9 +7,7 @@ import 'package:going_out_planner/search/search_screen.dart';
 import 'package:going_out_planner/settings/settings_screen.dart';
 
 class MainMenuWidget extends StatefulWidget {
-  final UserModel userModel;
-
-  const MainMenuWidget({Key? key, required this.userModel}) : super(key: key);
+  const MainMenuWidget({Key? key}) : super(key: key);
 
   @override
   _MainMenuState createState() => _MainMenuState();
