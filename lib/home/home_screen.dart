@@ -5,6 +5,7 @@ import 'package:going_out_planner/models/user_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:going_out_planner/assets/constants.dart' as Constants;
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class HomeScreenWidget extends StatefulWidget {
   const HomeScreenWidget({Key? key}) : super(key: key);
@@ -32,6 +33,8 @@ Future<UserModel?> _getUserInfo() async {
   }
 }
 
+final spinkit = SpinKitThreeBounce(color: Color(0xff222831));
+
 class _HomeScreenState extends State<HomeScreenWidget> {
   @override
   Widget build(BuildContext context) {
@@ -39,7 +42,7 @@ class _HomeScreenState extends State<HomeScreenWidget> {
       future: _getUserInfo(),
       builder: (BuildContext context, AsyncSnapshot<UserModel?> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: Text('Please wait its loading...'));
+          return spinkit;
         } else {
           if (snapshot.hasError)
             return Center(child: Text('Error: ${snapshot.error}'));
