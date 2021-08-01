@@ -186,7 +186,7 @@ class _LoginScreenState extends State<LoginScreenWidget> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  SignUpScreen()))
+                                                  SignUpWidget()))
                                     })
                         ],
                       ),

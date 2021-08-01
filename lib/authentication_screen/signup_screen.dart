@@ -1,10 +1,47 @@
+import 'dart:convert';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:going_out_planner/authentication_screen/login_screen.dart';
 import 'package:going_out_planner/main_menu/main_menu.dart';
+import 'package:going_out_planner/models/user_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+import 'package:going_out_planner/assets/constants.dart' as Constants;
 
-class SignUpScreen extends StatelessWidget {
+class SignUpWidget extends StatefulWidget {
+  const SignUpWidget({Key? key}) : super(key: key);
+
+  @override
+  _SignUpState createState() => _SignUpState();
+}
+
+Future<UserModel?> registerUser(
+    String firstName, String lastName, String email, String password) async {
+  final Map data = {
+    'firstName': firstName,
+    'lastName': lastName,
+    'email': email,
+    'password': password
+  };
+  final response = await http.post(Uri.parse(Constants.API_URL_REGISTER),
+      headers: {"Content-Type": "application/json"}, body: jsonEncode(data));
+  if (response.statusCode == 200) {
+    final String responseString = response.body;
+    return userModelFromJson(responseString);
+  } else {
+    return null;
+  }
+}
+
+class _SignUpState extends State<SignUpWidget> {
   final String _loginTitle = "SIGN UP";
+  TextEditingController firstNameController = new TextEditingController();
+  TextEditingController lastNameController = new TextEditingController();
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
+  TextEditingController confirmPasswordController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +75,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   child: TextFormField(
                     style: TextStyle(fontSize: 20),
+                    controller: firstNameController,
                     decoration: InputDecoration(
                         hintText: "First Name",
                         fillColor: Color(0xFFD4D4D4),
@@ -73,6 +111,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   child: TextFormField(
                     style: TextStyle(fontSize: 20),
+                    controller: lastNameController,
                     decoration: InputDecoration(
                         hintText: "Last Name",
                         fillColor: Color(0xFFD4D4D4),
@@ -108,6 +147,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   child: TextFormField(
                     style: TextStyle(fontSize: 20),
+                    controller: emailController,
                     decoration: InputDecoration(
                         hintText: "Email",
                         fillColor: Color(0xFFD4D4D4),
@@ -146,6 +186,7 @@ class SignUpScreen extends StatelessWidget {
                     obscureText: true,
                     enableSuggestions: false,
                     autocorrect: false,
+                    controller: passwordController,
                     decoration: InputDecoration(
                         hintText: "Password",
                         fillColor: Color(0xFFD4D4D4),
@@ -183,6 +224,7 @@ class SignUpScreen extends StatelessWidget {
                     obscureText: true,
                     enableSuggestions: false,
                     autocorrect: false,
+                    controller: confirmPasswordController,
                     decoration: InputDecoration(
                         hintText: "Confirm Password",
                         fillColor: Color(0xFFD4D4D4),
@@ -211,12 +253,30 @@ class SignUpScreen extends StatelessWidget {
                 Container(
                     margin: const EdgeInsets.only(top: 50.0),
                     child: ElevatedButton(
-                      onPressed: () {
-                        // Check If Valid
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => MainMenuWidget()));
+                      onPressed: () async {
+                        final String firstName = firstNameController.text;
+                        final String lastName = lastNameController.text;
+                        final String email = emailController.text;
+                        final String password = passwordController.text;
+                        final String confirmPassword =
+                            confirmPasswordController.text;
+
+                        if (password != confirmPassword) {
+                          return;
+                        }
+
+                        final UserModel? user = await registerUser(
+                            firstName, lastName, email, password);
+
+                        if (user != null) {
+                          final prefs = await SharedPreferences.getInstance();
+                          prefs.setString("token", user.token);
+                          prefs.setString("id", user.id);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MainMenuWidget()));
+                        }
                       },
                       child: Text(
                         'Sign Up'.toUpperCase(),
