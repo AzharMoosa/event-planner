@@ -1,7 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:going_out_planner/events/events_screen.dart';
+import 'package:going_out_planner/main_menu/main_menu.dart';
+import 'package:going_out_planner/models/event_model.dart';
 import 'package:going_out_planner/models/places_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:going_out_planner/assets/constants.dart' as Constants;
@@ -14,6 +18,39 @@ class AddEventsScreenWidget extends StatefulWidget {
   _AddEventsScreenState createState() => _AddEventsScreenState();
 }
 
+Future<EventModel?> createEvent(
+  String name,
+  String description,
+  bool isCustom,
+  String? place,
+  Map<String, dynamic> location,
+  int? limit,
+) async {
+  final Map data = {
+    'name': name,
+    'description': description,
+    "isCustom": isCustom,
+    "place": place,
+    "location": location,
+    "limit": limit
+  };
+  final prefs = await SharedPreferences.getInstance();
+  final token = prefs.getString('token') ?? "";
+  final response = await http.post(Uri.parse(Constants.API_URL_CREATE_EVENT),
+      headers: {
+        "Content-Type": "application/json",
+        HttpHeaders.authorizationHeader: "Bearer $token"
+      },
+      body: jsonEncode(data));
+
+  if (response.statusCode == 200) {
+    final String responseString = response.body;
+    return eventFromJson(responseString);
+  } else {
+    return null;
+  }
+}
+
 class _AddEventsScreenState extends State<AddEventsScreenWidget> {
   TextEditingController nameController = new TextEditingController();
   TextEditingController descriptionController = new TextEditingController();
@@ -24,6 +61,8 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
   TextEditingController limitController = new TextEditingController();
   String? _mySelection;
   List<String> data = [];
+  Map<String, String> idMap = new Map();
+  Map<String, Map<String, dynamic>> locationMap = new Map();
   bool isCustom = false;
   bool isLimited = false;
 
@@ -42,8 +81,12 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
       final String responseString = response.body;
       List<PlaceModel> places = placeModelFromJson(responseString);
       List<String> tmp = [];
+
       for (var i = 0; i < places.length; i++) {
-        tmp.add(places[i].name);
+        PlaceModel place = places[i];
+        tmp.add(place.name);
+        idMap[place.name] = place.id;
+        locationMap[place.name] = place.location.toJson();
       }
       setState(() {
         data = tmp;
@@ -435,7 +478,39 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                 Container(
                     margin: const EdgeInsets.only(top: 30.0),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        String name = nameController.text;
+                        String description = descriptionController.text;
+                        String? place;
+                        Map<String, dynamic>? location =
+                            locationMap[_mySelection];
+                        int? limit;
+                        if (isCustom) {
+                          String address = addressController.text;
+                          String postalCode = postalCodeController.text;
+                          String city = cityController.text;
+                          String country = countryController.text;
+                          location = new Location(
+                                  address: address,
+                                  postalCode: postalCode,
+                                  city: city,
+                                  country: country)
+                              .toJson();
+                        } else {
+                          place = idMap[_mySelection];
+                        }
+
+                        if (isLimited) {
+                          limit = int.parse(limitController.text);
+                        }
+                        await createEvent(name, description, isCustom, place,
+                            location!, limit);
+
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MainMenuWidget()));
+                      },
                       child: Text(
                         'Create Event'.toUpperCase(),
                         style:
