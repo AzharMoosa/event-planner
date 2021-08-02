@@ -66,7 +66,8 @@ class _HomeScreenState extends State<HomeScreenWidget> {
             builder:
                 (BuildContext context, AsyncSnapshot<UserModel?> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return spinkit;
+                return Container(
+                    margin: const EdgeInsets.only(top: 200), child: spinkit);
               } else {
                 if (snapshot.hasError)
                   return Center(child: Text('Error: ${snapshot.error}'));
@@ -132,7 +133,7 @@ class _HomeScreenState extends State<HomeScreenWidget> {
               builder: (BuildContext context,
                   AsyncSnapshot<List<PlaceModel>?> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return spinkit;
+                  return Container();
                 } else {
                   if (snapshot.hasError)
                     return Center(child: Text('Error: ${snapshot.error}'));
