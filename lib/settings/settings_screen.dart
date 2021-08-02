@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:going_out_planner/settings/about.dart';
+import 'package:going_out_planner/settings/help.dart';
+import 'package:going_out_planner/settings/manage_events.dart';
+import 'package:going_out_planner/settings/manage_search.dart';
+import 'package:going_out_planner/settings/notifications.dart';
+import 'package:going_out_planner/settings/privacy.dart';
+import 'package:going_out_planner/settings/profile_settings.dart';
 
 class SettingsScreenWidget extends StatefulWidget {
   const SettingsScreenWidget({Key? key}) : super(key: key);
@@ -53,7 +60,12 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           )),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProfileSettingsWidget()));
+                      },
                       child: Container(
                           child: Row(children: [
                         Text('Profile Settings'),
@@ -109,7 +121,12 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           )),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ManageEventsWidget()));
+                      },
                       child: Container(
                           child: Row(children: [
                         Text('Manage Events'),
@@ -130,7 +147,12 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           )),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ManageSearchWidget()));
+                      },
                       child: Container(
                           child: Row(children: [
                         Text('Manage Search Results'),
@@ -151,7 +173,12 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           )),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NotificationsWidget()));
+                      },
                       child: Container(
                           child: Row(children: [
                         Text('Notifications'),
@@ -172,7 +199,12 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           )),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PrivacyWidget()));
+                      },
                       child: Container(
                           child: Row(children: [
                         Text('Privacy'),
@@ -193,7 +225,12 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           )),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AboutWidget()));
+                      },
                       child: Container(
                           child: Row(children: [
                         Text('About'),
@@ -214,7 +251,12 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           )),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HelpWidget()));
+                      },
                       child: Container(
                           child: Row(children: [
                         Text('Help'),
