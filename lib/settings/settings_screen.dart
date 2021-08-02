@@ -6,6 +6,8 @@ import 'package:going_out_planner/settings/manage_search.dart';
 import 'package:going_out_planner/settings/notifications.dart';
 import 'package:going_out_planner/settings/privacy.dart';
 import 'package:going_out_planner/settings/profile_settings.dart';
+import 'package:going_out_planner/welcome_screen/welcome_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsScreenWidget extends StatefulWidget {
   const SettingsScreenWidget({Key? key}) : super(key: key);
@@ -86,7 +88,14 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           )),
-                      onPressed: () {},
+                      onPressed: () async {
+                        final prefs = await SharedPreferences.getInstance();
+                        await prefs.clear();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => WelcomeScreen()));
+                      },
                       child: Container(
                           child: Row(children: [
                         Text('Sign Out'),
