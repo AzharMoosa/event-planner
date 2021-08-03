@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:going_out_planner/events/events_screen.dart';
 import 'package:going_out_planner/main_menu/main_menu.dart';
 import 'package:going_out_planner/models/event_model.dart';
 import 'package:going_out_planner/models/places_model.dart';
