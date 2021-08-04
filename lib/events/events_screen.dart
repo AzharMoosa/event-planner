@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:going_out_planner/events/event_info_screen.dart';
+import 'package:going_out_planner/events/notifications_screen.dart';
 import 'package:going_out_planner/models/events_list_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:going_out_planner/assets/constants.dart' as Constants;
@@ -54,7 +55,19 @@ class _EventsScreenState extends State<EventsScreenWidget> {
                     color: Color(0xff222831),
                     fontSize: 30,
                     fontWeight: FontWeight.w700),
-              )
+              ),
+              Container(
+                  margin: const EdgeInsets.only(left: 100),
+                  child: IconButton(
+                    icon: new Icon(Icons.notifications),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  NotificationsScreenWidget()));
+                    },
+                  ))
             ],
           ),
           FutureBuilder<EventsList?>(
