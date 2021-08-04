@@ -92,7 +92,10 @@ class _InviteEventScreenState extends State<InviteEventScreenWidget> {
 
     _userList.forEach((userDetail) {
       splitString.forEach((str) {
-        if (userDetail.firstName.toLowerCase().contains(str.toLowerCase()) ||
+        if (str != "" &&
+                userDetail.firstName
+                    .toLowerCase()
+                    .contains(str.toLowerCase()) ||
             userDetail.lastName.toLowerCase().contains(str.toLowerCase())) {
           _searchResult.add(userDetail);
         }

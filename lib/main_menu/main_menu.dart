@@ -14,7 +14,7 @@ class MainMenuWidget extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenuWidget> {
-  int _selectedIndex = 0;
+  int selectedIndex = 0;
   bool homeSelected = true;
   bool searchSelected = false;
   bool eventsSelected = false;
@@ -29,7 +29,7 @@ class _MainMenuState extends State<MainMenuWidget> {
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      selectedIndex = index;
     });
   }
 
@@ -46,7 +46,7 @@ class _MainMenuState extends State<MainMenuWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-            child: Container(child: _widgetOptions.elementAt(_selectedIndex))),
+            child: Container(child: _widgetOptions.elementAt(selectedIndex))),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Color(0xfff67280),
           onPressed: () {

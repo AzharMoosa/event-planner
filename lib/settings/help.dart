@@ -10,7 +10,16 @@ class HelpWidget extends StatefulWidget {
 class _HelpState extends State<HelpWidget> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xff222831),
+        title: Text('Help',
+            style: TextStyle(
+                color: Color(0xffeeeeee),
+                fontSize: 21,
+                fontWeight: FontWeight.w700)),
+      ),
+      body: Text('Help'),
+    );
   }
 }

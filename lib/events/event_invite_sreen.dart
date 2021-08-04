@@ -1,10 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:going_out_planner/events/notifications_screen.dart';
+import 'package:going_out_planner/main_menu/main_menu.dart';
 import 'package:going_out_planner/models/event_model.dart';
 import 'package:going_out_planner/models/events_list_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:intl/intl.dart';
 import 'package:going_out_planner/assets/constants.dart' as Constants;
 import 'package:http/http.dart' as http;
 
@@ -36,7 +37,7 @@ Future<EventModel?> _acceptInvite(String id) async {
   }
 }
 
-Future<EventModel?> _declineInvite(String id) async {
+Future<Null> _declineInvite(String id) async {
   final prefs = await SharedPreferences.getInstance();
   final token = prefs.getString('token') ?? "";
   final response = await http.post(
@@ -46,12 +47,7 @@ Future<EventModel?> _declineInvite(String id) async {
       HttpHeaders.authorizationHeader: "Bearer $token"
     },
   );
-  if (response.statusCode == 200) {
-    final String responseString = response.body;
-    return eventFromJson(responseString);
-  } else {
-    return null;
-  }
+  return null;
 }
 
 class _EventInviteScreenState extends State<EventInviteScreenWidget> {
@@ -233,7 +229,12 @@ class _EventInviteScreenState extends State<EventInviteScreenWidget> {
                     child: ElevatedButton(
                       onPressed: () {
                         _acceptInvite(eventInfo.id);
-                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MainMenuWidget())).then(
+                            (selectedIndex) =>
+                                setState(() => {selectedIndex = 2}));
                       },
                       child: Text(
                         'Accept'.toUpperCase(),
@@ -258,7 +259,12 @@ class _EventInviteScreenState extends State<EventInviteScreenWidget> {
                     child: ElevatedButton(
                       onPressed: () {
                         _declineInvite(eventInfo.id);
-                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MainMenuWidget())).then(
+                            (selectedIndex) =>
+                                setState(() => {selectedIndex = 2}));
                       },
                       child: Text(
                         'Decline'.toUpperCase(),

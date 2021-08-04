@@ -10,7 +10,16 @@ class PrivacyWidget extends StatefulWidget {
 class _PrivacyState extends State<PrivacyWidget> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xff222831),
+        title: Text('Privacy',
+            style: TextStyle(
+                color: Color(0xffeeeeee),
+                fontSize: 21,
+                fontWeight: FontWeight.w700)),
+      ),
+      body: Text('Privacy'),
+    );
   }
 }

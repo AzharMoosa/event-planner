@@ -10,7 +10,16 @@ class ProfileSettingsWidget extends StatefulWidget {
 class _ProfileSettingsState extends State<ProfileSettingsWidget> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xff222831),
+        title: Text('Profile Settings',
+            style: TextStyle(
+                color: Color(0xffeeeeee),
+                fontSize: 21,
+                fontWeight: FontWeight.w700)),
+      ),
+      body: Text('Profile Settings'),
+    );
   }
 }
