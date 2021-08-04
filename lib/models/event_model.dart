@@ -20,6 +20,7 @@ class EventModel {
       required this.createdAt,
       required this.updatedAt,
       required this.v,
+      required this.date,
       this.place,
       required this.location,
       this.limit});
@@ -29,6 +30,7 @@ class EventModel {
   String name;
   String description;
   String hostUser;
+  String date;
   String? place;
   int? limit;
   Location location;
@@ -41,6 +43,7 @@ class EventModel {
         id: json["_id"],
         name: json["name"],
         description: json["description"],
+        date: json["date"],
         place: json["place"],
         location: Location.fromJson(json["location"]),
         hostUser: json["hostUser"],
@@ -54,6 +57,7 @@ class EventModel {
         "isCustom": isCustom,
         "_id": id,
         "name": name,
+        "date": date,
         "place": place,
         "location": location.toJson(),
         "limit": limit,

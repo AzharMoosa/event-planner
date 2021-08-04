@@ -9,6 +9,7 @@ import 'package:going_out_planner/models/places_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:going_out_planner/assets/constants.dart' as Constants;
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 class AddEventsScreenWidget extends StatefulWidget {
   const AddEventsScreenWidget({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class AddEventsScreenWidget extends StatefulWidget {
 Future<EventModel?> createEvent(
   String name,
   String description,
+  String date,
   bool isCustom,
   String? place,
   Map<String, dynamic> location,
@@ -29,6 +31,7 @@ Future<EventModel?> createEvent(
     'name': name,
     'description': description,
     "isCustom": isCustom,
+    "date": date,
     "place": place,
     "location": location,
     "limit": limit
@@ -53,6 +56,7 @@ Future<EventModel?> createEvent(
 class _AddEventsScreenState extends State<AddEventsScreenWidget> {
   TextEditingController nameController = new TextEditingController();
   TextEditingController descriptionController = new TextEditingController();
+  TextEditingController dateController = new TextEditingController();
   TextEditingController addressController = new TextEditingController();
   TextEditingController postalCodeController = new TextEditingController();
   TextEditingController cityController = new TextEditingController();
@@ -187,7 +191,61 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                             vertical: 10.0, horizontal: 20.0)),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please Enter An Event Name';
+                        return 'Please Enter An Event Description';
+                      }
+                      return null;
+                    },
+                  ),
+                ))
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                    child: Container(
+                  margin: const EdgeInsets.only(
+                    top: 30,
+                  ),
+                  child: TextFormField(
+                    onTap: () async {
+                      DateTime? date = DateTime(1900);
+                      FocusScope.of(context).requestFocus(new FocusNode());
+
+                      date = (await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime(2100)));
+
+                      if (date != null) {
+                        dateController.text =
+                            DateFormat('dd/MM/yyyy').format(date);
+                      }
+                    },
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(200),
+                    ],
+                    style: TextStyle(fontSize: 18),
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                    controller: dateController,
+                    decoration: InputDecoration(
+                        labelText: "Event Date",
+                        fillColor: Color(0xFFD4D4D4),
+                        filled: true,
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        hintStyle: TextStyle(fontSize: 18),
+                        prefixStyle: TextStyle(fontSize: 50),
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 20.0)),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please Enter An Event Date';
                       }
                       return null;
                     },
@@ -480,6 +538,7 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                       onPressed: () async {
                         String name = nameController.text;
                         String description = descriptionController.text;
+                        String date = dateController.text;
                         String? place;
                         Map<String, dynamic>? location =
                             locationMap[_mySelection];
@@ -489,6 +548,7 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                           String postalCode = postalCodeController.text;
                           String city = cityController.text;
                           String country = countryController.text;
+
                           location = new Location(
                                   address: address,
                                   postalCode: postalCode,
@@ -502,8 +562,8 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                         if (isLimited) {
                           limit = int.parse(limitController.text);
                         }
-                        await createEvent(name, description, isCustom, place,
-                            location!, limit);
+                        await createEvent(name, description, date, isCustom,
+                            place, location!, limit);
 
                         Navigator.push(
                             context,
