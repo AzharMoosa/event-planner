@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:going_out_planner/events/invite_event_screen.dart';
 import 'package:going_out_planner/models/events_list_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/intl.dart';
 
 class EventInfoScreenWidget extends StatefulWidget {
   final Event event;
@@ -88,7 +89,7 @@ class _EventInfoScreenState extends State<EventInfoScreenWidget> {
                     width: 300,
                     margin: const EdgeInsets.only(top: 20),
                     child: Text(
-                      '12/02/2022',
+                      widget.event.date,
                       style: TextStyle(fontSize: 20),
                     ))
               ],

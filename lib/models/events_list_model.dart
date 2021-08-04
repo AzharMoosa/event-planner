@@ -37,6 +37,7 @@ class Event {
     required this.hostUser,
     required this.createdAt,
     required this.updatedAt,
+    required this.date,
     required this.v,
   });
 
@@ -45,6 +46,7 @@ class Event {
   String id;
   String name;
   String description;
+  String date;
   String place;
   dynamic limit;
   String hostUser;
@@ -57,6 +59,7 @@ class Event {
         isCustom: json["isCustom"],
         id: json["_id"],
         name: json["name"],
+        date: json["date"],
         description: json["description"],
         place: json["place"],
         limit: json["limit"],
@@ -72,6 +75,7 @@ class Event {
         "_id": id,
         "name": name,
         "description": description,
+        "date": date,
         "place": place,
         "limit": limit,
         "hostUser": hostUser,

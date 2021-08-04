@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:going_out_planner/models/event_model.dart';
 import 'package:going_out_planner/models/events_list_model.dart';
 import 'package:going_out_planner/models/users_list_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,13 +16,17 @@ class InviteEventScreenWidget extends StatefulWidget {
       : super(key: key);
 
   @override
-  _InviteEventScreenState createState() => _InviteEventScreenState();
+  _InviteEventScreenState createState() => _InviteEventScreenState(event);
 }
 
 class _InviteEventScreenState extends State<InviteEventScreenWidget> {
   List<UsersList> _userList = [];
+  List<UsersList> _invitedUsers = [];
   TextEditingController controller = new TextEditingController();
   List<UsersList> _searchResult = [];
+
+  Event eventInfo;
+  _InviteEventScreenState(this.eventInfo);
 
   Future<List<UsersList>?> _getUsers() async {
     final prefs = await SharedPreferences.getInstance();
@@ -51,6 +56,25 @@ class _InviteEventScreenState extends State<InviteEventScreenWidget> {
     }
   }
 
+  Future<EventModel?> _inviteUser(String id) async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token') ?? "";
+    final Map data = {'userTwo': id};
+    final response = await http.post(
+        Uri.parse(Constants.API_URL_INVITE_EVENT + '/${eventInfo.id}/invite'),
+        headers: {
+          "Content-Type": "application/json",
+          HttpHeaders.authorizationHeader: "Bearer $token"
+        },
+        body: jsonEncode(data));
+    if (response.statusCode == 200) {
+      final String responseString = response.body;
+      return eventFromJson(responseString);
+    } else {
+      return null;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -64,15 +88,20 @@ class _InviteEventScreenState extends State<InviteEventScreenWidget> {
       return;
     }
 
+    List<String> splitString = text.split(" ");
+
     _userList.forEach((userDetail) {
-      if (userDetail.firstName.contains(text) ||
-          userDetail.lastName.contains(text)) {
-        _searchResult.add(userDetail);
-      }
-      ;
+      splitString.forEach((str) {
+        if (userDetail.firstName.toLowerCase().contains(str.toLowerCase()) ||
+            userDetail.lastName.toLowerCase().contains(str.toLowerCase())) {
+          _searchResult.add(userDetail);
+        }
+      });
     });
 
-    setState(() {});
+    setState(() {
+      _searchResult = _searchResult.toSet().toList();
+    });
   }
 
   @override
@@ -119,6 +148,9 @@ class _InviteEventScreenState extends State<InviteEventScreenWidget> {
                     itemBuilder: (context, i) {
                       return new Card(
                         child: new ListTile(
+                          onTap: () {
+                            _inviteUser(_searchResult[i].id);
+                          },
                           title: new Text(_searchResult[i].firstName +
                               ' ' +
                               _searchResult[i].lastName),
@@ -132,6 +164,9 @@ class _InviteEventScreenState extends State<InviteEventScreenWidget> {
                     itemBuilder: (context, index) {
                       return new Card(
                         child: new ListTile(
+                          onTap: () {
+                            _inviteUser(_userList[index].id);
+                          },
                           title: new Text(_userList[index].firstName +
                               ' ' +
                               _userList[index].lastName),
