@@ -21,7 +21,6 @@ class InviteEventScreenWidget extends StatefulWidget {
 
 class _InviteEventScreenState extends State<InviteEventScreenWidget> {
   List<UsersList> _userList = [];
-  List<UsersList> _invitedUsers = [];
   TextEditingController controller = new TextEditingController();
   List<UsersList> _searchResult = [];
 
@@ -152,8 +151,16 @@ class _InviteEventScreenState extends State<InviteEventScreenWidget> {
                     itemBuilder: (context, i) {
                       return new Card(
                         child: new ListTile(
-                          onTap: () {
-                            _inviteUser(_searchResult[i].id);
+                          onTap: () async {
+                            final EventModel? inviteStatus =
+                                await _inviteUser(_searchResult[i].id);
+                            if (inviteStatus != null) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          this.widget));
+                            }
                           },
                           title: new Text(_searchResult[i].firstName +
                               ' ' +
@@ -168,13 +175,16 @@ class _InviteEventScreenState extends State<InviteEventScreenWidget> {
                     itemBuilder: (context, index) {
                       return new Card(
                         child: new ListTile(
-                          onTap: () {
-                            _inviteUser(_userList[index].id);
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        this.widget));
+                          onTap: () async {
+                            final EventModel? inviteStatus =
+                                await _inviteUser(_userList[index].id);
+                            if (inviteStatus != null) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          this.widget));
+                            }
                           },
                           title: new Text(_userList[index].firstName +
                               ' ' +

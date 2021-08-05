@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:going_out_planner/events/notifications_screen.dart';
 import 'package:going_out_planner/main_menu/main_menu.dart';
 import 'package:going_out_planner/models/event_model.dart';
 import 'package:going_out_planner/models/events_list_model.dart';
@@ -40,7 +39,7 @@ Future<EventModel?> _acceptInvite(String id) async {
 Future<Null> _declineInvite(String id) async {
   final prefs = await SharedPreferences.getInstance();
   final token = prefs.getString('token') ?? "";
-  final response = await http.post(
+  await http.post(
     Uri.parse(Constants.API_URL_ACCEPT_INVITE + "/$id/invite/decline"),
     headers: {
       "Content-Type": "application/json",
