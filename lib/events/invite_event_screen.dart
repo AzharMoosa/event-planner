@@ -33,7 +33,8 @@ class _InviteEventScreenState extends State<InviteEventScreenWidget> {
     final token = prefs.getString('token') ?? "";
     final userID = prefs.getString('id') ?? "";
     final response = await http.get(
-      Uri.parse(Constants.API_URL_GET_USERS),
+      Uri.parse(
+          Constants.API_URL_GET_NON_INVITED_USERS + "/${eventInfo.id}/invited"),
       headers: {
         "Content-Type": "application/json",
         HttpHeaders.authorizationHeader: "Bearer $token"
@@ -169,6 +170,11 @@ class _InviteEventScreenState extends State<InviteEventScreenWidget> {
                         child: new ListTile(
                           onTap: () {
                             _inviteUser(_userList[index].id);
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        this.widget));
                           },
                           title: new Text(_userList[index].firstName +
                               ' ' +

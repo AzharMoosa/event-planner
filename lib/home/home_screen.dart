@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:going_out_planner/models/places_model.dart';
 import 'package:going_out_planner/models/user_model.dart';
+import 'package:going_out_planner/places/place_info.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:going_out_planner/assets/constants.dart' as Constants;
@@ -147,74 +148,89 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                                 for (var place in snapshot.data!.sublist(0, 3))
                                   Row(
                                     children: [
-                                      Container(
-                                          margin:
-                                              const EdgeInsets.only(top: 20),
-                                          width: 320,
-                                          height: 150,
-                                          child: Card(
-                                            child: Container(
+                                      InkWell(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        PlaceInfoScreenWidget(
+                                                            place: place)));
+                                          },
+                                          child: Container(
+                                              margin: const EdgeInsets.only(
+                                                  top: 20),
                                               width: 320,
-                                              height: 108,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          15.0),
-                                                  image: DecorationImage(
-                                                      colorFilter:
-                                                          new ColorFilter.mode(
-                                                              Colors.black
-                                                                  .withOpacity(
-                                                                      0.5),
-                                                              BlendMode
-                                                                  .dstATop),
-                                                      fit: BoxFit.cover,
-                                                      image: AssetImage(
-                                                          'images/card-bg-1.jpg'))),
-                                              child: Padding(
-                                                  padding: const EdgeInsets.all(
-                                                      20.0),
-                                                  child: Column(children: [
-                                                    Row(
-                                                      children: [
-                                                        Text(place.name,
-                                                            textAlign:
-                                                                TextAlign.start,
-                                                            style: TextStyle(
-                                                                fontSize: 18,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700,
-                                                                color: Color(
-                                                                    0xff000000)))
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      children: [
-                                                        Flexible(
-                                                            child: Container(
-                                                          margin:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  top: 10),
-                                                          child: Text(
-                                                              '${place.description.substring(0, place.description.length <= Constants.DESCRIPTION_CUTOFF ? place.description.length : Constants.DESCRIPTION_CUTOFF)}...',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .start,
-                                                              style: TextStyle(
-                                                                  fontSize: 13,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                  color: Color(
-                                                                      0xff000000))),
-                                                        ))
-                                                      ],
-                                                    )
-                                                  ])),
-                                            ),
-                                          ))
+                                              height: 150,
+                                              child: Card(
+                                                child: Container(
+                                                  width: 320,
+                                                  height: 108,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15.0),
+                                                      image: DecorationImage(
+                                                          colorFilter:
+                                                              new ColorFilter
+                                                                      .mode(
+                                                                  Colors.black
+                                                                      .withOpacity(
+                                                                          0.5),
+                                                                  BlendMode
+                                                                      .dstATop),
+                                                          fit: BoxFit.cover,
+                                                          image: AssetImage(
+                                                              'images/card-bg-1.jpg'))),
+                                                  child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              20.0),
+                                                      child: Column(children: [
+                                                        Row(
+                                                          children: [
+                                                            Text(place.name,
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .start,
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        18,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w700,
+                                                                    color: Color(
+                                                                        0xff000000)))
+                                                          ],
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            Flexible(
+                                                                child:
+                                                                    Container(
+                                                              margin:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      top: 10),
+                                                              child: Text(
+                                                                  '${place.description.substring(0, place.description.length <= Constants.DESCRIPTION_CUTOFF ? place.description.length : Constants.DESCRIPTION_CUTOFF)}...',
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          13,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      color: Color(
+                                                                          0xff000000))),
+                                                            ))
+                                                          ],
+                                                        )
+                                                      ])),
+                                                ),
+                                              )))
                                     ],
                                   )
                               ],
