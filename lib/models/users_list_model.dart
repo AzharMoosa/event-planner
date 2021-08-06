@@ -15,21 +15,20 @@ class UsersList {
     required this.id,
     required this.firstName,
     required this.lastName,
+    required this.email,
   });
 
   String id;
   String firstName;
   String lastName;
+  String email;
 
   factory UsersList.fromJson(Map<String, dynamic> json) => UsersList(
-        id: json["_id"],
-        firstName: json["firstName"],
-        lastName: json["lastName"],
-      );
+      id: json["_id"],
+      firstName: json["firstName"],
+      lastName: json["lastName"],
+      email: json["email"]);
 
-  Map<String, dynamic> toJson() => {
-        "_id": id,
-        "firstName": firstName,
-        "lastName": lastName,
-      };
+  Map<String, dynamic> toJson() =>
+      {"_id": id, "firstName": firstName, "lastName": lastName, "email": email};
 }
