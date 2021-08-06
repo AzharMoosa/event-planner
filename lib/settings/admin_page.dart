@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:going_out_planner/admin/admin_places_info.dart';
-import 'package:going_out_planner/admin/admin_settings.dart';
 import 'package:going_out_planner/admin/admin_user_info.dart';
 
 class AdminPageWidget extends StatefulWidget {
@@ -14,12 +13,10 @@ class _AdminPageState extends State<AdminPageWidget> {
   int selectedIndex = 0;
   bool userInfoPage = true;
   bool placesInfoPage = false;
-  bool adminSettingsPage = false;
 
   static const List<Widget> _widgetOptions = <Widget>[
     AdminUserInfoWidget(),
     AdminPlaceInfoWidget(),
-    AdminSettingsWidget(),
   ];
 
   void _onItemTapped(int index) {
@@ -32,7 +29,6 @@ class _AdminPageState extends State<AdminPageWidget> {
     setState(() {
       userInfoPage = false;
       placesInfoPage = false;
-      adminSettingsPage = false;
     });
   }
 
@@ -55,7 +51,7 @@ class _AdminPageState extends State<AdminPageWidget> {
                 margin: const EdgeInsets.only(left: 20, right: 20),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     IconButton(
                       icon: Icon(
@@ -84,19 +80,6 @@ class _AdminPageState extends State<AdminPageWidget> {
                         _onItemTapped(1);
                       },
                     )),
-                    IconButton(
-                      icon: Icon(
-                        Icons.settings,
-                        color: adminSettingsPage
-                            ? Color(0xfff67280)
-                            : Color(0xffEEEEEE),
-                      ),
-                      onPressed: () {
-                        _resetSelectedItem();
-                        adminSettingsPage = true;
-                        _onItemTapped(2);
-                      },
-                    ),
                   ],
                 ))));
   }

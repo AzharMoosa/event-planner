@@ -1,24 +1,49 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
 import 'package:going_out_planner/models/places_model.dart';
 import 'package:going_out_planner/settings/admin_page.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:going_out_planner/assets/constants.dart' as Constants;
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
+import 'dart:async';
+
+enum ImageSourceType { gallery, camera }
 
 class CreatePlaceWidget extends StatefulWidget {
-  const CreatePlaceWidget({Key? key}) : super(key: key);
+  final PlaceModel place;
+  const CreatePlaceWidget({Key? key, required this.place}) : super(key: key);
 
   @override
-  _CreatePlaceState createState() => _CreatePlaceState();
+  _CreatePlaceState createState() => _CreatePlaceState(place);
 }
 
-Future<Null> _createPlace(String name, String description, String image,
-    String ratings, String info, Map<String, dynamic> location) async {
+Future<Null> _uploadImage(XFile file) async {
+  Dio dio = new Dio();
+  String fileName = file.path.split('/').last;
+  FormData formData = FormData.fromMap({
+    "file": await MultipartFile.fromFile(file.path, filename: fileName),
+  });
+  var response = await dio.post("/info", data: formData);
+  print(response.statusCode);
+  return null;
+}
+
+Future<Null> _updatePlace(
+    String name,
+    String description,
+    String image,
+    String ratings,
+    String info,
+    Map<String, dynamic> location,
+    String id) async {
   final Map data = {
     'name': name,
     'description': description,
@@ -29,7 +54,7 @@ Future<Null> _createPlace(String name, String description, String image,
   };
   final prefs = await SharedPreferences.getInstance();
   final token = prefs.getString('token') ?? "";
-  await http.post(Uri.parse(Constants.API_URL_CREATE_PLACE),
+  await http.post(Uri.parse(Constants.API_URL_EDIT_PLACE + "/$id"),
       headers: {
         "Content-Type": "application/json",
         HttpHeaders.authorizationHeader: "Bearer $token"
@@ -40,6 +65,10 @@ Future<Null> _createPlace(String name, String description, String image,
 }
 
 class _CreatePlaceState extends State<CreatePlaceWidget> {
+  PlaceModel placeInfo;
+
+  _CreatePlaceState(this.placeInfo);
+
   TextEditingController nameController = new TextEditingController();
   TextEditingController descriptionController = new TextEditingController();
   TextEditingController imageController = new TextEditingController();
@@ -49,6 +78,24 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
   TextEditingController countryController = new TextEditingController();
   TextEditingController ratingsController = new TextEditingController();
   TextEditingController infoController = new TextEditingController();
+
+  void initState() {
+    super.initState();
+    nameController.text = placeInfo.name;
+    descriptionController.text = placeInfo.description;
+    imageController.text = placeInfo.image;
+    addressController.text = placeInfo.location.address;
+    postalCodeController.text = placeInfo.location.postalCode;
+    cityController.text = placeInfo.location.city;
+    countryController.text = placeInfo.location.country;
+    ratingsController.text = placeInfo.rating.toString();
+    infoController.text = placeInfo.info;
+    imagePicker = new ImagePicker();
+  }
+
+  var _image;
+  var imagePicker;
+  var type = ImageSourceType.gallery;
 
   @override
   Widget build(BuildContext context) {
@@ -207,7 +254,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                                   vertical: 10.0, horizontal: 20.0)),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please Enter An Adress Name';
+                              return 'Please Enter An Address Name';
                             }
                             return null;
                           },
@@ -244,7 +291,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                                   vertical: 10.0, horizontal: 20.0)),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please Enter An Adress Name';
+                              return 'Please Enter An Post Code';
                             }
                             return null;
                           },
@@ -390,38 +437,98 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                      child: Container(
-                    margin: const EdgeInsets.only(
-                      top: 20,
-                    ),
-                    child: TextFormField(
-                      style: TextStyle(fontSize: 18),
-                      controller: imageController,
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(30),
-                      ],
-                      decoration: InputDecoration(
-                          labelText: 'Image',
-                          fillColor: Color(0xFFD4D4D4),
-                          filled: true,
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                          hintStyle: TextStyle(fontSize: 18),
-                          prefixStyle: TextStyle(fontSize: 50),
-                          contentPadding: const EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 20.0)),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please Enter Image';
-                        }
-                        return null;
-                      },
-                    ),
-                  ))
+                  Container(
+                      margin: const EdgeInsets.only(top: 20.0),
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          var source = type == ImageSourceType.camera
+                              ? ImageSource.camera
+                              : ImageSource.gallery;
+                          XFile image = await imagePicker.pickImage(
+                              source: source,
+                              imageQuality: 50,
+                              preferredCameraDevice: CameraDevice.front);
+
+                          // Upload Image
+                          _uploadImage(image);
+
+                          setState(() {
+                            _image = File(image.path);
+                          });
+                        },
+                        child: Text(
+                          'Select Image'.toUpperCase(),
+                          style:
+                              TextStyle(fontFamily: 'Montserrat', fontSize: 13),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            primary: Color(0xfff67280),
+                            onPrimary: Color(0xffEEEEEE),
+                            minimumSize: Size(238, 43),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            )),
+                      ))
+                ],
+              ),
+              Row(
+                children: [
+                  Container(
+                      margin: const EdgeInsets.only(top: 20),
+                      width: 320,
+                      height: 150,
+                      child: _image != null
+                          ? Image.file(
+                              _image,
+                              width: 320,
+                              height: 108,
+                              fit: BoxFit.fitHeight,
+                            )
+                          : Card(
+                              child: Container(
+                                width: 320,
+                                height: 108,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    image: DecorationImage(
+                                        colorFilter: new ColorFilter.mode(
+                                            Colors.black.withOpacity(0.5),
+                                            BlendMode.dstATop),
+                                        fit: BoxFit.cover,
+                                        image: AssetImage(
+                                            'images/card-bg-1.jpg'))),
+                                child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Column(children: [
+                                      Row(
+                                        children: [
+                                          Text(nameController.text,
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w700,
+                                                  color: Color(0xff000000)))
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Flexible(
+                                              child: Container(
+                                            margin:
+                                                const EdgeInsets.only(top: 10),
+                                            child: Text(
+                                                descriptionController.text,
+                                                textAlign: TextAlign.start,
+                                                style: TextStyle(
+                                                    fontSize: 13,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Color(0xff000000))),
+                                          ))
+                                        ],
+                                      )
+                                    ])),
+                              ),
+                            ))
                 ],
               ),
               Row(
@@ -439,7 +546,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
               Row(
                 children: [
                   RatingBar.builder(
-                    initialRating: 3,
+                    initialRating: placeInfo.rating,
                     minRating: 1,
                     direction: Axis.horizontal,
                     allowHalfRating: true,
@@ -515,8 +622,8 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                           String ratings = ratingsController.text;
                           String info = infoController.text;
 
-                          await _createPlace(name, description, image, ratings,
-                              info, location);
+                          await _updatePlace(name, description, image, ratings,
+                              info, location, placeInfo.id);
 
                           Navigator.push(
                               context,
@@ -524,7 +631,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                                   builder: (context) => AdminPageWidget()));
                         },
                         child: Text(
-                          'Create Place'.toUpperCase(),
+                          'Update Place'.toUpperCase(),
                           style:
                               TextStyle(fontFamily: 'Montserrat', fontSize: 16),
                         ),

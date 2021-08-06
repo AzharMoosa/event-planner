@@ -4,9 +4,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:going_out_planner/admin/create_place.dart';
+import 'package:going_out_planner/models/place_model.dart';
 import 'package:going_out_planner/models/places_model.dart';
 import 'package:going_out_planner/assets/constants.dart' as Constants;
-import 'package:going_out_planner/places/place_info.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,6 +15,27 @@ class AdminPlaceInfoWidget extends StatefulWidget {
 
   @override
   _AdminPlaceInfoState createState() => _AdminPlaceInfoState();
+}
+
+Future<PlaceModel?> _createPlace() async {
+  final prefs = await SharedPreferences.getInstance();
+  final token = prefs.getString('token') ?? "";
+  final response = await http.post(
+    Uri.parse(Constants.API_URL_CREATE_PLACE),
+    headers: {
+      "Content-Type": "application/json",
+      HttpHeaders.authorizationHeader: "Bearer $token"
+    },
+  );
+
+  print(response.statusCode);
+
+  if (response.statusCode == 200) {
+    final String responseString = response.body;
+    return placeFromJson(responseString);
+  } else {
+    return null;
+  }
 }
 
 class _AdminPlaceInfoState extends State<AdminPlaceInfoWidget> {
@@ -100,7 +121,7 @@ class _AdminPlaceInfoState extends State<AdminPlaceInfoWidget> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    PlaceInfoScreenWidget(
+                                                    CreatePlaceWidget(
                                                         place: place)));
                                       },
                                       child: Text(
@@ -126,11 +147,20 @@ class _AdminPlaceInfoState extends State<AdminPlaceInfoWidget> {
                         width: 300,
                         margin: const EdgeInsets.only(top: 30),
                         child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => CreatePlaceWidget()));
+                          onPressed: () async {
+                            PlaceModel? place = await _createPlace();
+                            setState(() {
+                              _placeList.clear();
+                              _getPlaces();
+                            });
+                            if (place != null) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CreatePlaceWidget(
+                                            place: place,
+                                          )));
+                            }
                           },
                           child: Text(
                             'Create Place'.toUpperCase(),
