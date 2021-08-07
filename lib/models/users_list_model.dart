@@ -29,6 +29,10 @@ class UsersList {
       lastName: json["lastName"],
       email: json["email"]);
 
-  Map<String, dynamic> toJson() =>
-      {"_id": id, "firstName": firstName, "lastName": lastName, "email": email};
+  Map<String, dynamic> toJson() => {
+        "_id": id,
+        "firstName": firstName,
+        "lastName": lastName,
+        "email": email,
+      };
 }

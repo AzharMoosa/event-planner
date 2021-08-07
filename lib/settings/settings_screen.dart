@@ -222,58 +222,6 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => NotificationsWidget()));
-                      },
-                      child: Container(
-                          child: Row(children: [
-                        Text('Notifications'),
-                        SizedBox(width: 175),
-                        Icon(Icons.chevron_right),
-                      ])))),
-            ],
-          ),
-          Row(
-            children: [
-              Container(
-                  margin: const EdgeInsets.only(top: 20),
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          primary: Color(0xffD4D4D4),
-                          onPrimary: Color(0xff222831),
-                          minimumSize: Size(316, 35),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12.0),
-                          )),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PrivacyWidget()));
-                      },
-                      child: Container(
-                          child: Row(children: [
-                        Text('Privacy'),
-                        SizedBox(width: 215),
-                        Icon(Icons.chevron_right),
-                      ])))),
-            ],
-          ),
-          Row(
-            children: [
-              Container(
-                  margin: const EdgeInsets.only(top: 20),
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          primary: Color(0xffD4D4D4),
-                          onPrimary: Color(0xff222831),
-                          minimumSize: Size(316, 35),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12.0),
-                          )),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
                                 builder: (context) => AboutWidget()));
                       },
                       child: Container(
