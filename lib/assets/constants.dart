@@ -18,6 +18,7 @@ const String API_URL_GET_USER_INVITES =
 const String API_URL_ACCEPT_INVITE = "http://localhost:5000/api/events";
 const String API_URL_DECLINE_INVITE = "http://localhost:5000/api/events";
 const String API_URL_UPLOAD = "http://localhost:5000/api/upload";
+const String API_URL_GET_IMAGE = "http://localhost:5000/api/upload/retrieve";
 const int DESCRIPTION_CUTOFF = 140;
 const String ABOUT =
     "Struggling to find places to go? Discover a wide range of places such as restaurants, bars, activities and many more. Once you found a place to go, why not invite your friends? $APP_NAME allows you to easily create events, using places on the app or enter your own details, invite other users and also keep track of your invited events. See all events you are hosting, invited to and information about each event. The search functionality allows you to discover new places easily and gives you easy access to information about each place. Start discovering places today!";

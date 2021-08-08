@@ -180,8 +180,8 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                                                                   BlendMode
                                                                       .dstATop),
                                                           fit: BoxFit.cover,
-                                                          image: AssetImage(
-                                                              'images/card-bg-1.jpg'))),
+                                                          image: NetworkImage(
+                                                              'http://localhost:5000/api/upload/retrieve/${place.image.substring(place.image.lastIndexOf("/") + 1, place.image.length)}'))),
                                                   child: Padding(
                                                       padding:
                                                           const EdgeInsets.all(

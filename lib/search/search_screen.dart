@@ -16,6 +16,23 @@ class SearchScreenWidget extends StatefulWidget {
   _SearchScreenState createState() => _SearchScreenState();
 }
 
+Future<String> _getImage(String filepath) async {
+  final prefs = await SharedPreferences.getInstance();
+  final token = prefs.getString('token') ?? "";
+  final Map data = {'filepath': filepath};
+
+  final response = await http.post(Uri.parse(Constants.API_URL_GET_IMAGE),
+      headers: {
+        "Content-Type": "application/json",
+        HttpHeaders.authorizationHeader: "Bearer $token"
+      },
+      body: data);
+
+  print(response.body);
+
+  return response.body;
+}
+
 class _SearchScreenState extends State<SearchScreenWidget> {
   List<PlaceModel> _placeList = [];
   TextEditingController controller = new TextEditingController();
@@ -142,8 +159,8 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                                                     0.5),
                                                             BlendMode.dstATop),
                                                     fit: BoxFit.cover,
-                                                    image: AssetImage(
-                                                        'images/card-bg-1.jpg'))),
+                                                    image: NetworkImage(
+                                                        'http://localhost:5000/api/upload/retrieve/${place.image.substring(place.image.lastIndexOf("/") + 1, place.image.length)}'))),
                                             child: Padding(
                                                 padding:
                                                     const EdgeInsets.all(20.0),
