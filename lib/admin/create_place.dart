@@ -25,7 +25,7 @@ class CreatePlaceWidget extends StatefulWidget {
   _CreatePlaceState createState() => _CreatePlaceState(place);
 }
 
-Future<Null> _uploadImage(XFile file) async {
+Future<String> _uploadImage(XFile file) async {
   try {
     Dio dio = new Dio();
     var fileName = file.path.split('/').last;
@@ -43,10 +43,9 @@ Future<Null> _uploadImage(XFile file) async {
       data: formData,
       options: Options(contentType: 'multipart/form-data'),
     );
-    return null;
+    return response.data;
   } on DioError catch (e) {
-    print(e.error);
-    return null;
+    return e.error;
   }
 }
 
@@ -68,7 +67,7 @@ Future<Null> _updatePlace(
   };
   final prefs = await SharedPreferences.getInstance();
   final token = prefs.getString('token') ?? "";
-  await http.post(Uri.parse(Constants.API_URL_EDIT_PLACE + "/$id"),
+  await http.put(Uri.parse(Constants.API_URL_EDIT_PLACE + "/$id"),
       headers: {
         "Content-Type": "application/json",
         HttpHeaders.authorizationHeader: "Bearer $token"
@@ -464,10 +463,11 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                               preferredCameraDevice: CameraDevice.front);
 
                           // Upload Image
-                          _uploadImage(image);
+                          var imagePath = await _uploadImage(image);
 
                           setState(() {
                             _image = File(image.path);
+                            imageController.text = imagePath;
                           });
                         },
                         child: Text(
