@@ -12,8 +12,8 @@ import 'package:going_out_planner/assets/constants.dart' as Constants;
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path/path.dart';
 import 'dart:async';
+import 'package:http_parser/http_parser.dart';
 
 enum ImageSourceType { gallery, camera }
 
@@ -26,14 +26,28 @@ class CreatePlaceWidget extends StatefulWidget {
 }
 
 Future<Null> _uploadImage(XFile file) async {
-  Dio dio = new Dio();
-  String fileName = file.path.split('/').last;
-  FormData formData = FormData.fromMap({
-    "file": await MultipartFile.fromFile(file.path, filename: fileName),
-  });
-  var response = await dio.post("/info", data: formData);
-  print(response.statusCode);
-  return null;
+  try {
+    Dio dio = new Dio();
+    var fileName = file.path.split('/').last;
+
+    final formData = FormData.fromMap({
+      "image": await MultipartFile.fromFile(
+        file.path,
+        filename: fileName,
+        contentType: new MediaType("image", "jpeg"),
+      ),
+    });
+
+    final response = await dio.post(
+      Constants.API_URL_UPLOAD,
+      data: formData,
+      options: Options(contentType: 'multipart/form-data'),
+    );
+    return null;
+  } on DioError catch (e) {
+    print(e.error);
+    return null;
+  }
 }
 
 Future<Null> _updatePlace(
@@ -517,7 +531,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                                             margin:
                                                 const EdgeInsets.only(top: 10),
                                             child: Text(
-                                                descriptionController.text,
+                                                '${descriptionController.text.substring(0, descriptionController.text.length <= Constants.DESCRIPTION_CUTOFF ? descriptionController.text.length : Constants.DESCRIPTION_CUTOFF)}...',
                                                 textAlign: TextAlign.start,
                                                 style: TextStyle(
                                                     fontSize: 13,
