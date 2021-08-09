@@ -161,11 +161,11 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                                               margin: const EdgeInsets.only(
                                                   top: 20),
                                               width: 320,
-                                              height: 150,
+                                              height: 160,
                                               child: Card(
                                                 child: Container(
                                                   width: 320,
-                                                  height: 108,
+                                                  height: 160,
                                                   decoration: BoxDecoration(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -174,14 +174,14 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                                                           colorFilter:
                                                               new ColorFilter
                                                                       .mode(
-                                                                  Colors.black
+                                                                  Colors.white
                                                                       .withOpacity(
-                                                                          0.5),
+                                                                          0.4),
                                                                   BlendMode
                                                                       .dstATop),
                                                           fit: BoxFit.cover,
                                                           image: NetworkImage(
-                                                              'http://localhost:5000/api/upload/retrieve/${place.image.substring(place.image.lastIndexOf("/") + 1, place.image.length)}'))),
+                                                              place.image))),
                                                   child: Padding(
                                                       padding:
                                                           const EdgeInsets.all(
@@ -189,18 +189,20 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                                                       child: Column(children: [
                                                         Row(
                                                           children: [
-                                                            Text(place.name,
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .start,
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        18,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w700,
-                                                                    color: Color(
-                                                                        0xff000000)))
+                                                            Expanded(
+                                                                child: Text(
+                                                                    place.name,
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .start,
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                            20,
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w700,
+                                                                        color: Color(
+                                                                            0xff000000))))
                                                           ],
                                                         ),
                                                         Row(
@@ -213,7 +215,7 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                                                                           .only(
                                                                       top: 10),
                                                               child: Text(
-                                                                  '${place.description.substring(0, place.description.length <= Constants.DESCRIPTION_CUTOFF ? place.description.length : Constants.DESCRIPTION_CUTOFF)}...',
+                                                                  '${place.location.address}, ${place.location.postalCode}, ${place.location.city}, ${place.location.address}',
                                                                   textAlign:
                                                                       TextAlign
                                                                           .start,
@@ -222,7 +224,7 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                                                                           13,
                                                                       fontWeight:
                                                                           FontWeight
-                                                                              .w500,
+                                                                              .w700,
                                                                       color: Color(
                                                                           0xff000000))),
                                                             ))

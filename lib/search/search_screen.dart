@@ -140,13 +140,13 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                 Row(
                                   children: [
                                     Container(
-                                        margin: const EdgeInsets.only(top: 20),
+                                        margin: const EdgeInsets.only(top: 30),
                                         width: 320,
-                                        height: 150,
+                                        height: 160,
                                         child: Card(
                                           child: Container(
                                             width: 320,
-                                            height: 108,
+                                            height: 160,
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(15.0),
@@ -154,29 +154,32 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                                     colorFilter:
                                                         ColorFilter.mode(
                                                             Colors
-                                                                .black
+                                                                .white
                                                                 .withOpacity(
-                                                                    0.5),
+                                                                    0.4),
                                                             BlendMode.dstATop),
                                                     fit: BoxFit.cover,
                                                     image: NetworkImage(
-                                                        'http://localhost:5000/api/upload/retrieve/${place.image.substring(place.image.lastIndexOf("/") + 1, place.image.length)}'))),
+                                                        place.image))),
                                             child: Padding(
                                                 padding:
                                                     const EdgeInsets.all(20.0),
                                                 child: Column(children: [
                                                   Row(
                                                     children: [
-                                                      Text(place.name,
-                                                          textAlign:
-                                                              TextAlign.start,
-                                                          style: TextStyle(
-                                                              fontSize: 18,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w700,
-                                                              color: Color(
-                                                                  0xff000000)))
+                                                      Expanded(
+                                                          child: Text(
+                                                              place.name,
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .start,
+                                                              style: TextStyle(
+                                                                  fontSize: 20,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                  color: Color(
+                                                                      0xff000000))))
                                                     ],
                                                   ),
                                                   Row(
@@ -186,14 +189,14 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                                         margin: const EdgeInsets
                                                             .only(top: 10),
                                                         child: Text(
-                                                            '${place.description.substring(0, place.description.length <= Constants.DESCRIPTION_CUTOFF ? place.description.length : Constants.DESCRIPTION_CUTOFF)}...',
+                                                            '${place.location.address}, ${place.location.postalCode}, ${place.location.city}, ${place.location.address}',
                                                             textAlign:
                                                                 TextAlign.start,
                                                             style: TextStyle(
                                                                 fontSize: 13,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .w500,
+                                                                        .w700,
                                                                 color: Color(
                                                                     0xff000000))),
                                                       ))
@@ -227,13 +230,13 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                             },
                                             child: Container(
                                                 margin: const EdgeInsets.only(
-                                                    top: 20),
+                                                    top: 30),
                                                 width: 320,
-                                                height: 150,
+                                                height: 160,
                                                 child: Card(
                                                   child: Container(
                                                     width: 320,
-                                                    height: 108,
+                                                    height: 160,
                                                     decoration: BoxDecoration(
                                                         borderRadius:
                                                             BorderRadius
@@ -242,14 +245,14 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                                             colorFilter:
                                                                 ColorFilter.mode(
                                                                     Colors
-                                                                        .black
+                                                                        .white
                                                                         .withOpacity(
-                                                                            0.5),
+                                                                            0.4),
                                                                     BlendMode
                                                                         .dstATop),
                                                             fit: BoxFit.cover,
-                                                            image: AssetImage(
-                                                                'images/card-bg-1.jpg'))),
+                                                            image: NetworkImage(
+                                                                place.image))),
                                                     child: Padding(
                                                         padding:
                                                             const EdgeInsets
@@ -258,19 +261,16 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                                             children: [
                                                               Row(
                                                                 children: [
-                                                                  Text(
-                                                                      place
-                                                                          .name,
-                                                                      textAlign:
-                                                                          TextAlign
+                                                                  Expanded(
+                                                                      child: Text(
+                                                                          place
+                                                                              .name,
+                                                                          textAlign: TextAlign
                                                                               .start,
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                              18,
-                                                                          fontWeight: FontWeight
-                                                                              .w700,
-                                                                          color:
-                                                                              Color(0xff000000)))
+                                                                          style: TextStyle(
+                                                                              fontSize: 20,
+                                                                              fontWeight: FontWeight.w700,
+                                                                              color: Color(0xff000000))))
                                                                 ],
                                                               ),
                                                               Row(
@@ -283,7 +283,7 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                                                         top:
                                                                             10),
                                                                     child: Text(
-                                                                        '${place.description.substring(0, place.description.length <= Constants.DESCRIPTION_CUTOFF ? place.description.length : Constants.DESCRIPTION_CUTOFF)}...',
+                                                                        '${place.location.address}, ${place.location.postalCode}, ${place.location.city}, ${place.location.address}',
                                                                         textAlign:
                                                                             TextAlign
                                                                                 .start,
@@ -291,7 +291,7 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                                                             fontSize:
                                                                                 13,
                                                                             fontWeight:
-                                                                                FontWeight.w500,
+                                                                                FontWeight.w700,
                                                                             color: Color(0xff000000))),
                                                                   ))
                                                                 ],
