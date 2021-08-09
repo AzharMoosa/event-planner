@@ -113,25 +113,25 @@ class _AdminPlaceInfoState extends State<AdminPlaceInfoWidget> {
                           for (PlaceModel place in _placeList)
                             Row(
                               children: [
-                                Container(
-                                    margin: const EdgeInsets.only(top: 30),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    CreatePlaceWidget(
-                                                        place: place)));
-                                      },
-                                      child: Text(
-                                        place.name,
-                                        style: TextStyle(
-                                            color: Color(0xff222831),
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ))
+                                Expanded(
+                                    child: Container(
+                                        margin: const EdgeInsets.only(top: 30),
+                                        child: InkWell(
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          CreatePlaceWidget(
+                                                              place: place)));
+                                            },
+                                            child: Text(
+                                              place.name,
+                                              style: TextStyle(
+                                                  color: Color(0xff222831),
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w500),
+                                            ))))
                               ],
                             ),
                         ]))
