@@ -215,7 +215,7 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                                                                           .only(
                                                                       top: 10),
                                                               child: Text(
-                                                                  '${place.location.address}, ${place.location.postalCode}, ${place.location.city}, ${place.location.address}',
+                                                                  '${place.location.address}, ${place.location.postalCode}, ${place.location.city}, ${place.location.country}',
                                                                   textAlign:
                                                                       TextAlign
                                                                           .start,

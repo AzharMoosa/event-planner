@@ -64,28 +64,6 @@ class _PlaceInfoScreenState extends State<PlaceInfoScreenWidget> {
                 Container(
                     margin: const EdgeInsets.only(top: 15),
                     child: Text(
-                      'Description',
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
-                    )),
-              ],
-            ),
-            Row(
-              children: [
-                Container(
-                    width: 300,
-                    margin: const EdgeInsets.only(top: 15),
-                    child: Text(
-                      '${widget.place.description}',
-                      style: TextStyle(fontSize: 18),
-                    ))
-              ],
-            ),
-            Row(
-              children: [
-                Container(
-                    margin: const EdgeInsets.only(top: 15),
-                    child: Text(
                       'Location',
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.w700),

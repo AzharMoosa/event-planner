@@ -139,72 +139,88 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                               for (var place in _searchResult)
                                 Row(
                                   children: [
-                                    Container(
-                                        margin: const EdgeInsets.only(top: 30),
-                                        width: 320,
-                                        height: 160,
-                                        child: Card(
-                                          child: Container(
-                                            width: 320,
-                                            height: 160,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(15.0),
-                                                image: DecorationImage(
-                                                    colorFilter:
-                                                        ColorFilter.mode(
-                                                            Colors
-                                                                .white
-                                                                .withOpacity(
-                                                                    0.4),
-                                                            BlendMode.dstATop),
-                                                    fit: BoxFit.cover,
-                                                    image: NetworkImage(
-                                                        place.image))),
-                                            child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(20.0),
-                                                child: Column(children: [
-                                                  Row(
-                                                    children: [
-                                                      Expanded(
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    PlaceInfoScreenWidget(
+                                                        place: place)));
+                                      },
+                                      child: Container(
+                                          margin:
+                                              const EdgeInsets.only(top: 30),
+                                          width: 320,
+                                          height: 160,
+                                          child: Card(
+                                            child: Container(
+                                              width: 320,
+                                              height: 160,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                  image: DecorationImage(
+                                                      colorFilter:
+                                                          ColorFilter.mode(
+                                                              Colors.white
+                                                                  .withOpacity(
+                                                                      0.4),
+                                                              BlendMode
+                                                                  .dstATop),
+                                                      fit: BoxFit.cover,
+                                                      image: NetworkImage(
+                                                          place.image))),
+                                              child: Padding(
+                                                  padding: const EdgeInsets.all(
+                                                      20.0),
+                                                  child: Column(children: [
+                                                    Row(
+                                                      children: [
+                                                        Expanded(
+                                                            child: Text(
+                                                                place.name,
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .start,
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        20,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w700,
+                                                                    color: Color(
+                                                                        0xff000000))))
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Flexible(
+                                                            child: Container(
+                                                          margin:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  top: 10),
                                                           child: Text(
-                                                              place.name,
+                                                              '${place.location.address}, ${place.location.postalCode}, ${place.location.city}, ${place.location.country}',
                                                               textAlign:
                                                                   TextAlign
                                                                       .start,
                                                               style: TextStyle(
-                                                                  fontSize: 20,
+                                                                  fontSize: 13,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w700,
                                                                   color: Color(
-                                                                      0xff000000))))
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Flexible(
-                                                          child: Container(
-                                                        margin: const EdgeInsets
-                                                            .only(top: 10),
-                                                        child: Text(
-                                                            '${place.location.address}, ${place.location.postalCode}, ${place.location.city}, ${place.location.address}',
-                                                            textAlign:
-                                                                TextAlign.start,
-                                                            style: TextStyle(
-                                                                fontSize: 13,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700,
-                                                                color: Color(
-                                                                    0xff000000))),
-                                                      ))
-                                                    ],
-                                                  )
-                                                ])),
-                                          ),
-                                        ))
+                                                                      0xff000000))),
+                                                        ))
+                                                      ],
+                                                    )
+                                                  ])),
+                                            ),
+                                          )),
+                                    )
                                   ],
                                 )
                             ],
@@ -283,7 +299,7 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                                                         top:
                                                                             10),
                                                                     child: Text(
-                                                                        '${place.location.address}, ${place.location.postalCode}, ${place.location.city}, ${place.location.address}',
+                                                                        '${place.location.address}, ${place.location.postalCode}, ${place.location.city}, ${place.location.country}',
                                                                         textAlign:
                                                                             TextAlign
                                                                                 .start,

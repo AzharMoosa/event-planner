@@ -49,17 +49,10 @@ Future<String> _uploadImage(XFile file) async {
   }
 }
 
-Future<Null> _updatePlace(
-    String name,
-    String description,
-    String image,
-    String ratings,
-    String info,
-    Map<String, dynamic> location,
-    String id) async {
+Future<Null> _updatePlace(String name, String image, String ratings,
+    String info, Map<String, dynamic> location, String id) async {
   final Map data = {
     'name': name,
-    'description': description,
     "image": image,
     "ratings": double.parse(ratings),
     "info": info,
@@ -83,7 +76,6 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
   _CreatePlaceState(this.placeInfo);
 
   TextEditingController nameController = new TextEditingController();
-  TextEditingController descriptionController = new TextEditingController();
   TextEditingController imageController = new TextEditingController();
   TextEditingController addressController = new TextEditingController();
   TextEditingController postalCodeController = new TextEditingController();
@@ -95,7 +87,6 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
   void initState() {
     super.initState();
     nameController.text = placeInfo.name;
-    descriptionController.text = placeInfo.description;
     imageController.text = placeInfo.image;
     addressController.text = placeInfo.location.address;
     postalCodeController.text = placeInfo.location.postalCode;
@@ -168,56 +159,6 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please Enter An Place Name';
-                        }
-                        return null;
-                      },
-                    ),
-                  ))
-                ],
-              ),
-              Row(
-                children: [
-                  Container(
-                      margin: const EdgeInsets.only(top: 30.0, right: 10),
-                      child: Text('Place Description',
-                          style: TextStyle(
-                              color: Color(0xff222831),
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700))),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                      child: Container(
-                    margin: const EdgeInsets.only(
-                      top: 20,
-                    ),
-                    child: TextFormField(
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(200),
-                      ],
-                      style: TextStyle(fontSize: 18),
-                      keyboardType: TextInputType.multiline,
-                      maxLines: null,
-                      controller: descriptionController,
-                      decoration: InputDecoration(
-                          labelText: "Event Description",
-                          fillColor: Color(0xFFD4D4D4),
-                          filled: true,
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                          hintStyle: TextStyle(fontSize: 18),
-                          prefixStyle: TextStyle(fontSize: 50),
-                          contentPadding: const EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 20.0)),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please Enter An Event Description';
                         }
                         return null;
                       },
@@ -501,27 +442,29 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                           : Card(
                               child: Container(
                                 width: 320,
-                                height: 108,
+                                height: 160,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15.0),
                                     image: DecorationImage(
                                         colorFilter: new ColorFilter.mode(
-                                            Colors.black.withOpacity(0.5),
+                                            Colors.white.withOpacity(0.4),
                                             BlendMode.dstATop),
                                         fit: BoxFit.cover,
-                                        image: AssetImage(
-                                            'images/card-bg-1.jpg'))),
+                                        image: NetworkImage(placeInfo.image))),
                                 child: Padding(
                                     padding: const EdgeInsets.all(20.0),
                                     child: Column(children: [
                                       Row(
                                         children: [
-                                          Text(nameController.text,
-                                              textAlign: TextAlign.start,
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Color(0xff000000)))
+                                          Expanded(
+                                              child: Text(placeInfo.name,
+                                                  textAlign: TextAlign.start,
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color:
+                                                          Color(0xff000000))))
                                         ],
                                       ),
                                       Row(
@@ -531,11 +474,11 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                                             margin:
                                                 const EdgeInsets.only(top: 10),
                                             child: Text(
-                                                '${descriptionController.text.substring(0, descriptionController.text.length <= Constants.DESCRIPTION_CUTOFF ? descriptionController.text.length : Constants.DESCRIPTION_CUTOFF)}...',
+                                                '${placeInfo.location.address}, ${placeInfo.location.postalCode}, ${placeInfo.location.city}, ${placeInfo.location.country}',
                                                 textAlign: TextAlign.start,
                                                 style: TextStyle(
                                                     fontSize: 13,
-                                                    fontWeight: FontWeight.w500,
+                                                    fontWeight: FontWeight.w700,
                                                     color: Color(0xff000000))),
                                           ))
                                         ],
@@ -621,7 +564,6 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                       child: ElevatedButton(
                         onPressed: () async {
                           String name = nameController.text;
-                          String description = descriptionController.text;
                           String address = addressController.text;
                           String postalCode = postalCodeController.text;
                           String city = cityController.text;
@@ -636,8 +578,8 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                           String ratings = ratingsController.text;
                           String info = infoController.text;
 
-                          await _updatePlace(name, description, image, ratings,
-                              info, location, placeInfo.id);
+                          await _updatePlace(name, image, ratings, info,
+                              location, placeInfo.id);
 
                           Navigator.push(
                               context,

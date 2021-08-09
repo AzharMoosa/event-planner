@@ -17,7 +17,6 @@ class PlaceModel {
     required this.rating,
     required this.id,
     required this.name,
-    required this.description,
     required this.image,
     required this.info,
     required this.user,
@@ -29,7 +28,6 @@ class PlaceModel {
   double rating;
   String id;
   String name;
-  String description;
   String image;
   String info;
   String user;
@@ -41,7 +39,6 @@ class PlaceModel {
         rating: json["rating"].toDouble(),
         id: json["_id"],
         name: json["name"],
-        description: json["description"],
         image: json["image"],
         info: json["info"],
         user: json["user"],
@@ -54,7 +51,6 @@ class PlaceModel {
         "rating": rating,
         "_id": id,
         "name": name,
-        "description": description,
         "image": image,
         "info": info,
         "user": user,
