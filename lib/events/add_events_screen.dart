@@ -308,7 +308,8 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                                     dropdownColor: Color(0xFFD4D4D4),
                                     items: data.map((item) {
                                       return new DropdownMenuItem(
-                                        child: new Text(item),
+                                        child: new SizedBox(
+                                            width: 200, child: new Text(item)),
                                         value: item.toString(),
                                       );
                                     }).toList(),
