@@ -74,7 +74,7 @@ class _AdminPlaceInfoState extends State<AdminPlaceInfoWidget> {
     _getPlaces();
   }
 
-  final spinkit = SpinKitThreeBounce(color: Color(0xff222831));
+  final spinkit = SpinKitThreeBounce(color: Constants.BLACK);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +89,7 @@ class _AdminPlaceInfoState extends State<AdminPlaceInfoWidget> {
                     Text(
                       'Places',
                       style: TextStyle(
-                          color: Color(0xff222831),
+                          color: Constants.BLACK,
                           fontSize: 30,
                           fontWeight: FontWeight.w700),
                     )
@@ -104,7 +104,7 @@ class _AdminPlaceInfoState extends State<AdminPlaceInfoWidget> {
                               Text(
                                 'Name',
                                 style: TextStyle(
-                                    color: Color(0xff222831),
+                                    color: Constants.BLACK,
                                     fontSize: 20,
                                     fontWeight: FontWeight.w700),
                               ),
@@ -128,7 +128,7 @@ class _AdminPlaceInfoState extends State<AdminPlaceInfoWidget> {
                                             child: Text(
                                               place.name,
                                               style: TextStyle(
-                                                  color: Color(0xff222831),
+                                                  color: Constants.BLACK,
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.w500),
                                             ))))
@@ -168,8 +168,8 @@ class _AdminPlaceInfoState extends State<AdminPlaceInfoWidget> {
                                 fontFamily: 'Montserrat', fontSize: 16),
                           ),
                           style: ElevatedButton.styleFrom(
-                              primary: Color(0xff3F72AF),
-                              onPrimary: Color(0xffEEEEEE),
+                              primary: Constants.BUTTON_SECONDARY,
+                              onPrimary: Constants.LIGHT,
                               minimumSize: Size(238, 43),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12.0),

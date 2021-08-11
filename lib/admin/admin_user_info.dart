@@ -52,7 +52,7 @@ class _AdminUserInfoState extends State<AdminUserInfoWidget> {
     _getUsers();
   }
 
-  final spinkit = SpinKitThreeBounce(color: Color(0xff222831));
+  final spinkit = SpinKitThreeBounce(color: Constants.BLACK);
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class _AdminUserInfoState extends State<AdminUserInfoWidget> {
                     Text(
                       'Users',
                       style: TextStyle(
-                          color: Color(0xff222831),
+                          color: Constants.BLACK,
                           fontSize: 30,
                           fontWeight: FontWeight.w700),
                     )
@@ -83,7 +83,7 @@ class _AdminUserInfoState extends State<AdminUserInfoWidget> {
                               Text(
                                 'Name',
                                 style: TextStyle(
-                                    color: Color(0xff222831),
+                                    color: Constants.BLACK,
                                     fontSize: 20,
                                     fontWeight: FontWeight.w700),
                               ),
@@ -106,7 +106,7 @@ class _AdminUserInfoState extends State<AdminUserInfoWidget> {
                                       child: Text(
                                         user.firstName + " " + user.lastName,
                                         style: TextStyle(
-                                            color: Color(0xff222831),
+                                            color: Constants.BLACK,
                                             fontSize: 20,
                                             fontWeight: FontWeight.w500),
                                       ),

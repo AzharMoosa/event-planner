@@ -65,10 +65,10 @@ class _UserInfoState extends State<UserInfoWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xff222831),
+          backgroundColor: Constants.BLACK,
           title: Text('User Info',
               style: TextStyle(
-                  color: Color(0xffeeeeee),
+                  color: Constants.LIGHT,
                   fontSize: 21,
                   fontWeight: FontWeight.w700)),
         ),
@@ -90,7 +90,7 @@ class _UserInfoState extends State<UserInfoWidget> {
                       controller: firstNameController,
                       decoration: InputDecoration(
                           labelText: "First Name",
-                          fillColor: Color(0xFFD4D4D4),
+                          fillColor: Constants.GREY,
                           filled: true,
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
@@ -126,7 +126,7 @@ class _UserInfoState extends State<UserInfoWidget> {
                       controller: lastNameController,
                       decoration: InputDecoration(
                           labelText: "Last Name",
-                          fillColor: Color(0xFFD4D4D4),
+                          fillColor: Constants.GREY,
                           filled: true,
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
@@ -162,7 +162,7 @@ class _UserInfoState extends State<UserInfoWidget> {
                       controller: emailController,
                       decoration: InputDecoration(
                           labelText: "Email",
-                          fillColor: Color(0xFFD4D4D4),
+                          fillColor: Constants.GREY,
                           filled: true,
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
@@ -210,8 +210,8 @@ class _UserInfoState extends State<UserInfoWidget> {
                               TextStyle(fontFamily: 'Montserrat', fontSize: 16),
                         ),
                         style: ElevatedButton.styleFrom(
-                            primary: Color(0xfff67280),
-                            onPrimary: Color(0xffEEEEEE),
+                            primary: Constants.BUTTON_PRIMARY,
+                            onPrimary: Constants.LIGHT,
                             minimumSize: Size(238, 43),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12.0),

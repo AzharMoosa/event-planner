@@ -13,10 +13,10 @@ class _AboutState extends State<AboutWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xff222831),
+          backgroundColor: Constants.BLACK,
           title: Text('About',
               style: TextStyle(
-                  color: Color(0xffeeeeee),
+                  color: Constants.LIGHT,
                   fontSize: 21,
                   fontWeight: FontWeight.w700)),
         ),
@@ -32,7 +32,7 @@ class _AboutState extends State<AboutWidget> {
                         Constants.ABOUT,
                         style: TextStyle(
                             fontSize: 20,
-                            color: Color(0xff222831),
+                            color: Constants.BLACK,
                             height: 1.5,
                             fontWeight: FontWeight.w500),
                       ))

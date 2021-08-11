@@ -68,10 +68,10 @@ class _ManageEventsState extends State<ManageEventsWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff222831),
+        backgroundColor: Constants.BLACK,
         title: Text('Manage Events',
             style: TextStyle(
-                color: Color(0xffeeeeee),
+                color: Constants.LIGHT,
                 fontSize: 21,
                 fontWeight: FontWeight.w700)),
       ),
@@ -85,7 +85,7 @@ class _ManageEventsState extends State<ManageEventsWidget> {
                         Text(
                           'Manage Events',
                           style: TextStyle(
-                              color: Color(0xff222831),
+                              color: Constants.BLACK,
                               fontSize: 30,
                               fontWeight: FontWeight.w700),
                         )
@@ -97,8 +97,8 @@ class _ManageEventsState extends State<ManageEventsWidget> {
                             margin: const EdgeInsets.only(top: 20),
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                    primary: Color(0xfff67280),
-                                    onPrimary: Color(0xffEEEEEE),
+                                    primary: Constants.BUTTON_PRIMARY,
+                                    onPrimary: Constants.LIGHT,
                                     minimumSize: Size(316, 35),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12.0),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:going_out_planner/models/places_model.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:going_out_planner/assets/constants.dart' as Constants;
 
 class PlaceInfoScreenWidget extends StatefulWidget {
   final PlaceModel place;
@@ -28,10 +29,10 @@ class _PlaceInfoScreenState extends State<PlaceInfoScreenWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff222831),
+        backgroundColor: Constants.BLACK,
         title: Text(placeInfo.name,
             style: TextStyle(
-                color: Color(0xffeeeeee),
+                color: Constants.LIGHT,
                 fontSize: 21,
                 fontWeight: FontWeight.w700)),
       ),

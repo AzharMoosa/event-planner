@@ -63,7 +63,7 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
               Text(
                 'Settings',
                 style: TextStyle(
-                    color: Color(0xff222831),
+                    color: Constants.BLACK,
                     fontSize: 30,
                     fontWeight: FontWeight.w700),
               )
@@ -76,7 +76,7 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                 child: Text(
                   'Account',
                   style: TextStyle(
-                      color: Color(0xff222831),
+                      color: Constants.BLACK,
                       fontSize: 20,
                       fontWeight: FontWeight.w500),
                 ),
@@ -89,8 +89,8 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                   margin: const EdgeInsets.only(top: 20),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Color(0xffD4D4D4),
-                          onPrimary: Color(0xff222831),
+                          primary: Constants.LIGHT,
+                          onPrimary: Constants.BLACK,
                           minimumSize: Size(316, 35),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
@@ -115,8 +115,8 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                   margin: const EdgeInsets.only(top: 20),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Color(0xffD4D4D4),
-                          onPrimary: Color(0xff222831),
+                          primary: Constants.LIGHT,
+                          onPrimary: Constants.BLACK,
                           minimumSize: Size(316, 35),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
@@ -144,7 +144,7 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                 child: Text(
                   'Preferences',
                   style: TextStyle(
-                      color: Color(0xff222831),
+                      color: Constants.BLACK,
                       fontSize: 20,
                       fontWeight: FontWeight.w500),
                 ),
@@ -157,8 +157,8 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                   margin: const EdgeInsets.only(top: 20),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Color(0xffD4D4D4),
-                          onPrimary: Color(0xff222831),
+                          primary: Constants.LIGHT,
+                          onPrimary: Constants.BLACK,
                           minimumSize: Size(316, 35),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
@@ -183,8 +183,8 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                   margin: const EdgeInsets.only(top: 20),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Color(0xffD4D4D4),
-                          onPrimary: Color(0xff222831),
+                          primary: Constants.LIGHT,
+                          onPrimary: Constants.BLACK,
                           minimumSize: Size(316, 35),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
@@ -209,8 +209,8 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                   margin: const EdgeInsets.only(top: 20),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Color(0xffD4D4D4),
-                          onPrimary: Color(0xff222831),
+                          primary: Constants.LIGHT,
+                          onPrimary: Constants.BLACK,
                           minimumSize: Size(316, 35),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
@@ -236,8 +236,8 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                         margin: const EdgeInsets.only(top: 20),
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                primary: Color(0xffD4D4D4),
-                                onPrimary: Color(0xff222831),
+                                primary: Constants.LIGHT,
+                                onPrimary: Constants.BLACK,
                                 minimumSize: Size(316, 35),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12.0),

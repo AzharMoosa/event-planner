@@ -4,6 +4,7 @@ import 'package:going_out_planner/events/events_screen.dart';
 import 'package:going_out_planner/home/home_screen.dart';
 import 'package:going_out_planner/search/search_screen.dart';
 import 'package:going_out_planner/settings/settings_screen.dart';
+import 'package:going_out_planner/assets/constants.dart' as Constants;
 
 class MainMenuWidget extends StatefulWidget {
   const MainMenuWidget({Key? key}) : super(key: key);
@@ -47,7 +48,7 @@ class _MainMenuState extends State<MainMenuWidget> {
         body: SafeArea(
             child: Container(child: _widgetOptions.elementAt(selectedIndex))),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Color(0xfff67280),
+          backgroundColor: Constants.BUTTON_PRIMARY,
           onPressed: () {
             Navigator.push(
                 context,
@@ -58,7 +59,7 @@ class _MainMenuState extends State<MainMenuWidget> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
-            color: Color(0xff222831),
+            color: Constants.BLACK,
             shape: CircularNotchedRectangle(),
             notchMargin: 5,
             child: Container(
@@ -70,9 +71,8 @@ class _MainMenuState extends State<MainMenuWidget> {
                     IconButton(
                       icon: Icon(
                         Icons.home,
-                        color: homeSelected
-                            ? Color(0xfff67280)
-                            : Color(0xffEEEEEE),
+                        color:
+                            homeSelected ? Constants.PRIMARY : Constants.LIGHT,
                       ),
                       onPressed: () {
                         _resetSelectedItem();
@@ -86,8 +86,8 @@ class _MainMenuState extends State<MainMenuWidget> {
                           icon: Icon(
                             Icons.search,
                             color: searchSelected
-                                ? Color(0xfff67280)
-                                : Color(0xffEEEEEE),
+                                ? Constants.SECONDARY
+                                : Constants.LIGHT,
                           ),
                           onPressed: () {
                             _resetSelectedItem();
@@ -99,8 +99,8 @@ class _MainMenuState extends State<MainMenuWidget> {
                       icon: Icon(
                         Icons.event,
                         color: eventsSelected
-                            ? Color(0xfff67280)
-                            : Color(0xffEEEEEE),
+                            ? Constants.SECONDARY
+                            : Constants.LIGHT,
                       ),
                       onPressed: () {
                         _resetSelectedItem();
@@ -112,8 +112,8 @@ class _MainMenuState extends State<MainMenuWidget> {
                       icon: Icon(
                         Icons.settings,
                         color: settingsSelected
-                            ? Color(0xfff67280)
-                            : Color(0xffEEEEEE),
+                            ? Constants.SECONDARY
+                            : Constants.LIGHT,
                       ),
                       onPressed: () {
                         _resetSelectedItem();

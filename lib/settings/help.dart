@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:going_out_planner/main_menu/main_menu.dart';
+import 'package:going_out_planner/assets/constants.dart' as Constants;
 
 class HelpWidget extends StatefulWidget {
   const HelpWidget({Key? key}) : super(key: key);
@@ -28,10 +29,10 @@ class _HelpState extends State<HelpWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff222831),
+        backgroundColor: Constants.BLACK,
         title: Text('Help',
             style: TextStyle(
-                color: Color(0xffeeeeee),
+                color: Constants.LIGHT,
                 fontSize: 21,
                 fontWeight: FontWeight.w700)),
       ),
@@ -45,7 +46,7 @@ class _HelpState extends State<HelpWidget> {
                         Text(
                           'Help',
                           style: TextStyle(
-                              color: Color(0xff222831),
+                              color: Constants.BLACK,
                               fontSize: 30,
                               fontWeight: FontWeight.w700),
                         )
@@ -58,7 +59,7 @@ class _HelpState extends State<HelpWidget> {
                           child: Text(
                             'Contact Us',
                             style: TextStyle(
-                                color: Color(0xff222831),
+                                color: Constants.BLACK,
                                 fontSize: 25,
                                 fontWeight: FontWeight.w500),
                           ),
@@ -83,7 +84,7 @@ class _HelpState extends State<HelpWidget> {
                             controller: bodyController,
                             decoration: InputDecoration(
                                 labelText: "Body",
-                                fillColor: Color(0xFFD4D4D4),
+                                fillColor: Constants.GREY,
                                 filled: true,
                                 border: InputBorder.none,
                                 focusedBorder: InputBorder.none,
@@ -125,8 +126,8 @@ class _HelpState extends State<HelpWidget> {
                                     fontFamily: 'Montserrat', fontSize: 16),
                               ),
                               style: ElevatedButton.styleFrom(
-                                  primary: Color(0xff3F72AF),
-                                  onPrimary: Color(0xffEEEEEE),
+                                  primary: Constants.BUTTON_SECONDARY,
+                                  onPrimary: Constants.LIGHT,
                                   minimumSize: Size(238, 43),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12.0),

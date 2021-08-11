@@ -105,10 +105,10 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xff222831),
+          backgroundColor: Constants.BLACK,
           title: Text('Create Place',
               style: TextStyle(
-                  color: Color(0xffeeeeee),
+                  color: Constants.LIGHT,
                   fontSize: 21,
                   fontWeight: FontWeight.w700)),
         ),
@@ -124,7 +124,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                       margin: const EdgeInsets.only(top: 30.0, right: 10),
                       child: Text('Place Name',
                           style: TextStyle(
-                              color: Color(0xff222831),
+                              color: Constants.BLACK,
                               fontSize: 18,
                               fontWeight: FontWeight.w700))),
                 ],
@@ -145,7 +145,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                       ],
                       decoration: InputDecoration(
                           labelText: 'Place Name',
-                          fillColor: Color(0xFFD4D4D4),
+                          fillColor: Constants.GREY,
                           filled: true,
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
@@ -172,7 +172,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                       margin: const EdgeInsets.only(top: 30.0, right: 10),
                       child: Text('Location',
                           style: TextStyle(
-                              color: Color(0xff222831),
+                              color: Constants.BLACK,
                               fontSize: 18,
                               fontWeight: FontWeight.w700))),
                 ],
@@ -195,7 +195,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                           ],
                           decoration: InputDecoration(
                               labelText: "Address",
-                              fillColor: Color(0xFFD4D4D4),
+                              fillColor: Constants.GREY,
                               filled: true,
                               border: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -232,7 +232,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                           ],
                           decoration: InputDecoration(
                               labelText: "Post Code",
-                              fillColor: Color(0xFFD4D4D4),
+                              fillColor: Constants.GREY,
                               filled: true,
                               border: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -269,7 +269,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                           ],
                           decoration: InputDecoration(
                               labelText: "City",
-                              fillColor: Color(0xFFD4D4D4),
+                              fillColor: Constants.GREY,
                               filled: true,
                               border: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -306,7 +306,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                           ],
                           decoration: InputDecoration(
                               labelText: "Country",
-                              fillColor: Color(0xFFD4D4D4),
+                              fillColor: Constants.GREY,
                               filled: true,
                               border: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -335,7 +335,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                       margin: const EdgeInsets.only(top: 30.0, right: 10),
                       child: Text('Info',
                           style: TextStyle(
-                              color: Color(0xff222831),
+                              color: Constants.BLACK,
                               fontSize: 18,
                               fontWeight: FontWeight.w700))),
                 ],
@@ -356,7 +356,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                       ],
                       decoration: InputDecoration(
                           labelText: 'Info',
-                          fillColor: Color(0xFFD4D4D4),
+                          fillColor: Constants.GREY,
                           filled: true,
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
@@ -383,7 +383,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                       margin: const EdgeInsets.only(top: 30.0, right: 10),
                       child: Text('Image',
                           style: TextStyle(
-                              color: Color(0xff222831),
+                              color: Constants.BLACK,
                               fontSize: 18,
                               fontWeight: FontWeight.w700))),
                 ],
@@ -417,8 +417,8 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                               TextStyle(fontFamily: 'Montserrat', fontSize: 13),
                         ),
                         style: ElevatedButton.styleFrom(
-                            primary: Color(0xfff67280),
-                            onPrimary: Color(0xffEEEEEE),
+                            primary: Constants.BUTTON_PRIMARY,
+                            onPrimary: Constants.LIGHT,
                             minimumSize: Size(238, 43),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12.0),
@@ -463,8 +463,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                                                       fontSize: 20,
                                                       fontWeight:
                                                           FontWeight.w700,
-                                                      color:
-                                                          Color(0xff000000))))
+                                                      color: Colors.black)))
                                         ],
                                       ),
                                       Row(
@@ -479,7 +478,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                                                 style: TextStyle(
                                                     fontSize: 13,
                                                     fontWeight: FontWeight.w700,
-                                                    color: Color(0xff000000))),
+                                                    color: Colors.black)),
                                           ))
                                         ],
                                       )
@@ -495,7 +494,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                           top: 30.0, right: 10, bottom: 20),
                       child: Text('Rating',
                           style: TextStyle(
-                              color: Color(0xff222831),
+                              color: Constants.BLACK,
                               fontSize: 18,
                               fontWeight: FontWeight.w700))),
                 ],
@@ -535,7 +534,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                       ],
                       decoration: InputDecoration(
                           labelText: "Rating",
-                          fillColor: Color(0xFFD4D4D4),
+                          fillColor: Constants.GREY,
                           filled: true,
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
@@ -592,8 +591,8 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                               TextStyle(fontFamily: 'Montserrat', fontSize: 16),
                         ),
                         style: ElevatedButton.styleFrom(
-                            primary: Color(0xff3F72AF),
-                            onPrimary: Color(0xffEEEEEE),
+                            primary: Constants.BUTTON_SECONDARY,
+                            onPrimary: Constants.LIGHT,
                             minimumSize: Size(238, 43),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12.0),

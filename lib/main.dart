@@ -3,6 +3,7 @@ import 'package:going_out_planner/main_menu/main_menu.dart';
 import './welcome_screen/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
+import 'package:going_out_planner/assets/constants.dart' as Constants;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,6 +14,6 @@ Future<void> main() async {
   runApp(MaterialApp(
       title: 'Going Out Planner',
       theme: ThemeData(
-          scaffoldBackgroundColor: Color(0xffEEEEEE), fontFamily: 'Montserrat'),
+          scaffoldBackgroundColor: Constants.LIGHT, fontFamily: 'Montserrat'),
       home: token == null ? WelcomeScreen() : MainMenuWidget()));
 }

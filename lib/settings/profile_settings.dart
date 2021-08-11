@@ -53,7 +53,7 @@ class _ProfileSettingsState extends State<ProfileSettingsWidget> {
   TextEditingController confirmPasswordController = new TextEditingController();
   bool loading = true;
 
-  final spinkit = SpinKitThreeBounce(color: Color(0xff222831));
+  final spinkit = SpinKitThreeBounce(color: Constants.BLACK);
 
   Future<UserModel?> _getUserInfo() async {
     final prefs = await SharedPreferences.getInstance();
@@ -91,10 +91,10 @@ class _ProfileSettingsState extends State<ProfileSettingsWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xff222831),
+          backgroundColor: Constants.BLACK,
           title: Text('Profile Settings',
               style: TextStyle(
-                  color: Color(0xffeeeeee),
+                  color: Constants.LIGHT,
                   fontSize: 21,
                   fontWeight: FontWeight.w700)),
         ),
@@ -117,7 +117,7 @@ class _ProfileSettingsState extends State<ProfileSettingsWidget> {
                             controller: firstNameController,
                             decoration: InputDecoration(
                                 labelText: "First Name",
-                                fillColor: Color(0xFFD4D4D4),
+                                fillColor: Constants.GREY,
                                 filled: true,
                                 border: InputBorder.none,
                                 focusedBorder: InputBorder.none,
@@ -153,7 +153,7 @@ class _ProfileSettingsState extends State<ProfileSettingsWidget> {
                             controller: lastNameController,
                             decoration: InputDecoration(
                                 labelText: "Last Name",
-                                fillColor: Color(0xFFD4D4D4),
+                                fillColor: Constants.GREY,
                                 filled: true,
                                 border: InputBorder.none,
                                 focusedBorder: InputBorder.none,
@@ -189,7 +189,7 @@ class _ProfileSettingsState extends State<ProfileSettingsWidget> {
                             controller: emailController,
                             decoration: InputDecoration(
                                 labelText: "Email",
-                                fillColor: Color(0xFFD4D4D4),
+                                fillColor: Constants.GREY,
                                 filled: true,
                                 border: InputBorder.none,
                                 focusedBorder: InputBorder.none,
@@ -225,7 +225,7 @@ class _ProfileSettingsState extends State<ProfileSettingsWidget> {
                             controller: passwordController,
                             decoration: InputDecoration(
                                 labelText: "Password",
-                                fillColor: Color(0xFFD4D4D4),
+                                fillColor: Constants.GREY,
                                 filled: true,
                                 border: InputBorder.none,
                                 focusedBorder: InputBorder.none,
@@ -261,7 +261,7 @@ class _ProfileSettingsState extends State<ProfileSettingsWidget> {
                             controller: confirmPasswordController,
                             decoration: InputDecoration(
                                 labelText: "Confirm Password",
-                                fillColor: Color(0xFFD4D4D4),
+                                fillColor: Constants.GREY,
                                 filled: true,
                                 border: InputBorder.none,
                                 focusedBorder: InputBorder.none,
@@ -319,8 +319,8 @@ class _ProfileSettingsState extends State<ProfileSettingsWidget> {
                                     fontFamily: 'Montserrat', fontSize: 16),
                               ),
                               style: ElevatedButton.styleFrom(
-                                  primary: Color(0xfff67280),
-                                  onPrimary: Color(0xffEEEEEE),
+                                  primary: Constants.BUTTON_PRIMARY,
+                                  onPrimary: Constants.LIGHT,
                                   minimumSize: Size(238, 43),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12.0),
