@@ -22,8 +22,6 @@ class _SearchScreenState extends State<SearchScreenWidget> {
   List<PlaceModel> _searchResult = [];
   bool loading = true;
 
-  _SearchScreenState();
-
   Future<List<PlaceModel>?> _getPlaces() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token') ?? "";
@@ -80,7 +78,7 @@ class _SearchScreenState extends State<SearchScreenWidget> {
     });
   }
 
-  final spinkit = SpinKitThreeBounce(color: Color(0xff222831));
+  final spinkit = SpinKitThreeBounce(color: Constants.BLACK);
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +86,7 @@ class _SearchScreenState extends State<SearchScreenWidget> {
       body: Column(
         children: <Widget>[
           Container(
-            color: Color(0xffEEEEEE),
+            color: Constants.LIGHT,
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Card(
@@ -173,8 +171,8 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .w700,
-                                                                    color: Color(
-                                                                        0xff000000))))
+                                                                    color: Colors
+                                                                        .black)))
                                                       ],
                                                     ),
                                                     Row(
@@ -195,8 +193,8 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w700,
-                                                                  color: Color(
-                                                                      0xff000000))),
+                                                                  color: Colors
+                                                                      .black)),
                                                         ))
                                                       ],
                                                     )
@@ -269,7 +267,7 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                                                           style: TextStyle(
                                                                               fontSize: 20,
                                                                               fontWeight: FontWeight.w700,
-                                                                              color: Color(0xff000000))))
+                                                                              color: Colors.black)))
                                                                 ],
                                                               ),
                                                               Row(
@@ -291,7 +289,7 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                                                                 13,
                                                                             fontWeight:
                                                                                 FontWeight.w700,
-                                                                            color: Color(0xff000000))),
+                                                                            color: Colors.black)),
                                                                   ))
                                                                 ],
                                                               )
