@@ -4,11 +4,18 @@ import './welcome_screen/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var token = prefs.getString('token');
+  print(token);
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  runApp(MyApp());
+  runApp(MaterialApp(
+      title: 'Going Out Planner',
+      theme: ThemeData(
+          scaffoldBackgroundColor: Color(0xffEEEEEE), fontFamily: 'Montserrat'),
+      home: token == null ? WelcomeScreen() : MainMenuWidget()));
 }
 
 // ignore: must_be_immutable
@@ -16,13 +23,14 @@ class MyApp extends StatelessWidget {
   Future<bool> isLoggedIn() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token') ?? "";
-    return token == "";
+    return token != "";
   }
 
   bool logged = false;
 
   void initState() async {
     logged = await isLoggedIn();
+    print(logged);
   }
 
   @override
