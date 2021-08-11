@@ -95,6 +95,7 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
       }
       setState(() {
         data = tmp;
+        _mySelection = data[0];
         loading = false;
       });
       return placeModelFromJson(responseString);
@@ -109,16 +110,16 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
     this._getPlaces();
   }
 
-  final spinkit = SpinKitThreeBounce(color: Color(0xff222831));
+  final spinkit = SpinKitThreeBounce(color: Constants.BLACK);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff222831),
+        backgroundColor: Constants.BLACK,
         title: Text('Create Events',
             style: TextStyle(
-                color: Color(0xffeeeeee),
+                color: Constants.LIGHT,
                 fontSize: 21,
                 fontWeight: FontWeight.w700)),
       ),
@@ -145,7 +146,7 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                           ],
                           decoration: InputDecoration(
                               labelText: 'Event Name',
-                              fillColor: Color(0xFFD4D4D4),
+                              fillColor: Constants.GREY,
                               filled: true,
                               border: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -184,7 +185,7 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                           controller: descriptionController,
                           decoration: InputDecoration(
                               labelText: "Event Description",
-                              fillColor: Color(0xFFD4D4D4),
+                              fillColor: Constants.GREY,
                               filled: true,
                               border: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -239,7 +240,7 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                           controller: dateController,
                           decoration: InputDecoration(
                               labelText: "Event Date",
-                              fillColor: Color(0xFFD4D4D4),
+                              fillColor: Constants.GREY,
                               filled: true,
                               border: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -266,14 +267,14 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                           margin: const EdgeInsets.only(top: 30.0, right: 10),
                           child: Text('Custom Event',
                               style: TextStyle(
-                                  color: Color(0xff222831),
+                                  color: Constants.BLACK,
                                   fontSize: 18,
                                   fontWeight: FontWeight.w700))),
                       Container(
                         margin: const EdgeInsets.only(top: 30.0),
                         child: Checkbox(
-                          checkColor: Color(0xffeeeeee),
-                          activeColor: Color(0xff222831),
+                          checkColor: Constants.LIGHT,
+                          activeColor: Constants.BLACK,
                           value: this.isCustom,
                           onChanged: (bool? value) {
                             setState(() {
@@ -293,7 +294,7 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                               child: Text(
                                 'Place',
                                 style: TextStyle(
-                                    color: Color(0xff222831),
+                                    color: Constants.BLACK,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w700),
                               ),
@@ -303,9 +304,9 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                                 child: Container(
                                   padding: EdgeInsets.symmetric(horizontal: 10),
                                   decoration:
-                                      BoxDecoration(color: Color(0xFFD4D4D4)),
+                                      BoxDecoration(color: Constants.GREY),
                                   child: DropdownButton(
-                                    dropdownColor: Color(0xFFD4D4D4),
+                                    dropdownColor: Constants.GREY,
                                     items: data.map((item) {
                                       return new DropdownMenuItem(
                                         child: new SizedBox(
@@ -341,7 +342,7 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                                     ],
                                     decoration: InputDecoration(
                                         labelText: "Address",
-                                        fillColor: Color(0xFFD4D4D4),
+                                        fillColor: Constants.GREY,
                                         filled: true,
                                         border: InputBorder.none,
                                         focusedBorder: InputBorder.none,
@@ -380,7 +381,7 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                                     ],
                                     decoration: InputDecoration(
                                         labelText: "Post Code",
-                                        fillColor: Color(0xFFD4D4D4),
+                                        fillColor: Constants.GREY,
                                         filled: true,
                                         border: InputBorder.none,
                                         focusedBorder: InputBorder.none,
@@ -419,7 +420,7 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                                     ],
                                     decoration: InputDecoration(
                                         labelText: "City",
-                                        fillColor: Color(0xFFD4D4D4),
+                                        fillColor: Constants.GREY,
                                         filled: true,
                                         border: InputBorder.none,
                                         focusedBorder: InputBorder.none,
@@ -458,7 +459,7 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                                     ],
                                     decoration: InputDecoration(
                                         labelText: "Country",
-                                        fillColor: Color(0xFFD4D4D4),
+                                        fillColor: Constants.GREY,
                                         filled: true,
                                         border: InputBorder.none,
                                         focusedBorder: InputBorder.none,
@@ -489,14 +490,14 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                           margin: const EdgeInsets.only(top: 30.0, right: 10),
                           child: Text('Add Limit',
                               style: TextStyle(
-                                  color: Color(0xff222831),
+                                  color: Constants.BLACK,
                                   fontSize: 18,
                                   fontWeight: FontWeight.w700))),
                       Container(
                         margin: const EdgeInsets.only(top: 30.0),
                         child: Checkbox(
-                          checkColor: Color(0xffeeeeee),
-                          activeColor: Color(0xff222831),
+                          checkColor: Constants.LIGHT,
+                          activeColor: Constants.BLACK,
                           value: this.isLimited,
                           onChanged: (bool? value) {
                             setState(() {
@@ -522,10 +523,10 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                                 keyboardType: TextInputType.number,
                                 inputFormatters: <TextInputFormatter>[
                                   FilteringTextInputFormatter.digitsOnly
-                                ], //
+                                ],
                                 decoration: InputDecoration(
                                     labelText: "Number Of People",
-                                    fillColor: Color(0xFFD4D4D4),
+                                    fillColor: Constants.GREY,
                                     filled: true,
                                     border: InputBorder.none,
                                     focusedBorder: InputBorder.none,
@@ -557,6 +558,12 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                               String name = nameController.text;
                               String description = descriptionController.text;
                               String date = dateController.text;
+
+                              if (name.isEmpty ||
+                                  description.isEmpty ||
+                                  date.isEmpty) {
+                                return;
+                              }
                               String? place;
                               Map<String, dynamic>? location =
                                   locationMap[_mySelection];
@@ -595,7 +602,7 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
                             ),
                             style: ElevatedButton.styleFrom(
                                 primary: Color(0xff3F72AF),
-                                onPrimary: Color(0xffEEEEEE),
+                                onPrimary: Constants.LIGHT,
                                 minimumSize: Size(238, 43),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12.0),

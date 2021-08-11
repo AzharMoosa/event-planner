@@ -35,16 +35,16 @@ Future<EventsList?> _getInvites() async {
 }
 
 class _NotificationsScreenState extends State<NotificationsScreenWidget> {
-  final spinkit = SpinKitThreeBounce(color: Color(0xff222831));
+  final spinkit = SpinKitThreeBounce(color: Constants.BLACK);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xff222831),
+          backgroundColor: Constants.BLACK,
           title: Text('Events Invite',
               style: TextStyle(
-                  color: Color(0xffeeeeee),
+                  color: Constants.LIGHT,
                   fontSize: 21,
                   fontWeight: FontWeight.w700)),
         ),
@@ -81,8 +81,9 @@ class _NotificationsScreenState extends State<NotificationsScreenWidget> {
                                               const EdgeInsets.only(top: 20),
                                           child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
-                                                  primary: Color(0xff3F72AF),
-                                                  onPrimary: Color(0xffEEEEEE),
+                                                  primary: Constants
+                                                      .BUTTON_SECONDARY,
+                                                  onPrimary: Constants.LIGHT,
                                                   minimumSize: Size(316, 40),
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:

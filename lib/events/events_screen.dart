@@ -35,7 +35,7 @@ Future<EventsList?> _getEvents() async {
   }
 }
 
-final spinkit = SpinKitThreeBounce(color: Color(0xff222831));
+final spinkit = SpinKitThreeBounce(color: Constants.BLACK);
 
 class _EventsScreenState extends State<EventsScreenWidget> {
   @override
@@ -51,7 +51,7 @@ class _EventsScreenState extends State<EventsScreenWidget> {
               Text(
                 'My Events',
                 style: TextStyle(
-                    color: Color(0xff222831),
+                    color: Constants.BLACK,
                     fontSize: 30,
                     fontWeight: FontWeight.w700),
               ),
@@ -106,10 +106,10 @@ class _EventsScreenState extends State<EventsScreenWidget> {
                                               child: ElevatedButton(
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                          primary:
-                                                              Color(0xff3F72AF),
+                                                          primary: Constants
+                                                              .SECONDARY,
                                                           onPrimary:
-                                                              Color(0xffEEEEEE),
+                                                              Constants.LIGHT,
                                                           minimumSize:
                                                               Size(316, 40),
                                                           shape:

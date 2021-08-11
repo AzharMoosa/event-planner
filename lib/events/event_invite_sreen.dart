@@ -57,10 +57,10 @@ class _EventInviteScreenState extends State<EventInviteScreenWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff222831),
+        backgroundColor: Constants.BLACK,
         title: Text('Event Info',
             style: TextStyle(
-                color: Color(0xffeeeeee),
+                color: Constants.LIGHT,
                 fontSize: 21,
                 fontWeight: FontWeight.w700)),
       ),
@@ -241,8 +241,8 @@ class _EventInviteScreenState extends State<EventInviteScreenWidget> {
                             TextStyle(fontFamily: 'Montserrat', fontSize: 16),
                       ),
                       style: ElevatedButton.styleFrom(
-                          primary: Color(0xff3F72AF),
-                          onPrimary: Color(0xffEEEEEE),
+                          primary: Constants.SECONDARY,
+                          onPrimary: Constants.LIGHT,
                           minimumSize: Size(238, 43),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
@@ -271,8 +271,8 @@ class _EventInviteScreenState extends State<EventInviteScreenWidget> {
                             TextStyle(fontFamily: 'Montserrat', fontSize: 16),
                       ),
                       style: ElevatedButton.styleFrom(
-                          primary: Color(0xfff67280),
-                          onPrimary: Color(0xffEEEEEE),
+                          primary: Constants.BUTTON_PRIMARY,
+                          onPrimary: Constants.LIGHT,
                           minimumSize: Size(238, 43),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),

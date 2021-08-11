@@ -3,6 +3,7 @@ import 'package:going_out_planner/events/invite_event_screen.dart';
 import 'package:going_out_planner/models/events_list_model.dart';
 import 'package:going_out_planner/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:going_out_planner/assets/constants.dart' as Constants;
 
 class EventInfoScreenWidget extends StatefulWidget {
   final Event event;
@@ -38,10 +39,10 @@ class _EventInfoScreenState extends State<EventInfoScreenWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff222831),
+        backgroundColor: Constants.BLACK,
         title: Text('Event Info',
             style: TextStyle(
-                color: Color(0xffeeeeee),
+                color: Constants.LIGHT,
                 fontSize: 21,
                 fontWeight: FontWeight.w700)),
       ),
@@ -224,8 +225,8 @@ class _EventInfoScreenState extends State<EventInfoScreenWidget> {
                                   fontFamily: 'Montserrat', fontSize: 16),
                             ),
                             style: ElevatedButton.styleFrom(
-                                primary: Color(0xff3F72AF),
-                                onPrimary: Color(0xffEEEEEE),
+                                primary: Constants.SECONDARY,
+                                onPrimary: Constants.LIGHT,
                                 minimumSize: Size(238, 43),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12.0),

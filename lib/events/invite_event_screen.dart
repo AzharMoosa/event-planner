@@ -111,17 +111,17 @@ class _InviteEventScreenState extends State<InviteEventScreenWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff222831),
+        backgroundColor: Constants.BLACK,
         title: Text('Invite Users',
             style: TextStyle(
-                color: Color(0xffeeeeee),
+                color: Constants.LIGHT,
                 fontSize: 21,
                 fontWeight: FontWeight.w700)),
       ),
       body: new Column(
         children: <Widget>[
           new Container(
-            color: Color(0xff222831),
+            color: Constants.BLACK,
             child: new Padding(
               padding: const EdgeInsets.all(20.0),
               child: new Card(
