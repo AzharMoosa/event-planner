@@ -89,7 +89,7 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                   margin: const EdgeInsets.only(top: 20),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Constants.LIGHT,
+                          primary: Constants.GREY,
                           onPrimary: Constants.BLACK,
                           minimumSize: Size(316, 35),
                           shape: RoundedRectangleBorder(
@@ -115,7 +115,7 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                   margin: const EdgeInsets.only(top: 20),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Constants.LIGHT,
+                          primary: Constants.GREY,
                           onPrimary: Constants.BLACK,
                           minimumSize: Size(316, 35),
                           shape: RoundedRectangleBorder(
@@ -157,7 +157,7 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                   margin: const EdgeInsets.only(top: 20),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Constants.LIGHT,
+                          primary: Constants.GREY,
                           onPrimary: Constants.BLACK,
                           minimumSize: Size(316, 35),
                           shape: RoundedRectangleBorder(
@@ -183,7 +183,7 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                   margin: const EdgeInsets.only(top: 20),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Constants.LIGHT,
+                          primary: Constants.GREY,
                           onPrimary: Constants.BLACK,
                           minimumSize: Size(316, 35),
                           shape: RoundedRectangleBorder(
@@ -209,7 +209,7 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                   margin: const EdgeInsets.only(top: 20),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Constants.LIGHT,
+                          primary: Constants.GREY,
                           onPrimary: Constants.BLACK,
                           minimumSize: Size(316, 35),
                           shape: RoundedRectangleBorder(
@@ -236,7 +236,7 @@ class _SettingsScreenState extends State<SettingsScreenWidget> {
                         margin: const EdgeInsets.only(top: 20),
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                primary: Constants.LIGHT,
+                                primary: Constants.GREY,
                                 onPrimary: Constants.BLACK,
                                 minimumSize: Size(316, 35),
                                 shape: RoundedRectangleBorder(

@@ -86,7 +86,7 @@ class _MainMenuState extends State<MainMenuWidget> {
                           icon: Icon(
                             Icons.search,
                             color: searchSelected
-                                ? Constants.SECONDARY
+                                ? Constants.PRIMARY
                                 : Constants.LIGHT,
                           ),
                           onPressed: () {
@@ -99,7 +99,7 @@ class _MainMenuState extends State<MainMenuWidget> {
                       icon: Icon(
                         Icons.event,
                         color: eventsSelected
-                            ? Constants.SECONDARY
+                            ? Constants.PRIMARY
                             : Constants.LIGHT,
                       ),
                       onPressed: () {
@@ -112,7 +112,7 @@ class _MainMenuState extends State<MainMenuWidget> {
                       icon: Icon(
                         Icons.settings,
                         color: settingsSelected
-                            ? Constants.SECONDARY
+                            ? Constants.PRIMARY
                             : Constants.LIGHT,
                       ),
                       onPressed: () {
