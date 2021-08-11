@@ -26,5 +26,7 @@ const String ABOUT =
 const Color BLACK = Color(0xff222831);
 const Color LIGHT = Color(0xffEEEEEE);
 const Color GREY = Color(0xFFD4D4D4);
+const Color PRIMARY = Color(0xfff67280);
+const Color SECONDARY = Color(0xff3F72AF);
 const Color BUTTON_PRIMARY = Color(0xfff67280);
 const Color BUTTON_SECONDARY = Color(0xff3F72AF);

@@ -54,7 +54,7 @@ Future<List<PlaceModel>?> _getPlaces() async {
   }
 }
 
-final spinkit = SpinKitThreeBounce(color: Color(0xff222831));
+final spinkit = SpinKitThreeBounce(color: Constants.BLACK);
 
 class _HomeScreenState extends State<HomeScreenWidget> {
   @override
@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                                             style: TextStyle(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w300,
-                                                color: Color(0xff222831)))
+                                                color: Constants.BLACK))
                                       ]),
                                       Row(
                                         children: [
@@ -99,7 +99,8 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                                               style: TextStyle(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.w700,
-                                                  color: Color(0xff3F72AF)))
+                                                  color: Constants
+                                                      .BUTTON_SECONDARY))
                                         ],
                                       ),
                                     ],
@@ -111,13 +112,13 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                                     Container(
                                       margin: const EdgeInsets.only(right: 5),
                                       child: Icon(Icons.local_fire_department,
-                                          color: Color(0xffF67280), size: 30),
+                                          color: Constants.PRIMARY, size: 30),
                                     ),
                                     Text(
                                       'Popular',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                          color: Color(0xffF67280),
+                                          color: Constants.PRIMARY,
                                           fontSize: 20,
                                           fontWeight: FontWeight.w700),
                                     )
@@ -201,8 +202,8 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                                                                         fontWeight:
                                                                             FontWeight
                                                                                 .w700,
-                                                                        color: Color(
-                                                                            0xff000000))))
+                                                                        color: Colors
+                                                                            .black)))
                                                           ],
                                                         ),
                                                         Row(
@@ -225,8 +226,8 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .w700,
-                                                                      color: Color(
-                                                                          0xff000000))),
+                                                                      color: Colors
+                                                                          .black)),
                                                             ))
                                                           ],
                                                         )
