@@ -56,7 +56,7 @@ class _SignUpState extends State<SignUpWidget> {
                     child: Text(
                       _loginTitle,
                       style: TextStyle(
-                          color: Color(0xff222831),
+                          color: Constants.BLACK,
                           fontSize: 35,
                           fontWeight: FontWeight.w700),
                       textAlign: TextAlign.center,
@@ -78,7 +78,7 @@ class _SignUpState extends State<SignUpWidget> {
                     controller: firstNameController,
                     decoration: InputDecoration(
                         hintText: "First Name",
-                        fillColor: Color(0xFFD4D4D4),
+                        fillColor: Constants.GREY,
                         filled: true,
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
@@ -114,7 +114,7 @@ class _SignUpState extends State<SignUpWidget> {
                     controller: lastNameController,
                     decoration: InputDecoration(
                         hintText: "Last Name",
-                        fillColor: Color(0xFFD4D4D4),
+                        fillColor: Constants.GREY,
                         filled: true,
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
@@ -150,7 +150,7 @@ class _SignUpState extends State<SignUpWidget> {
                     controller: emailController,
                     decoration: InputDecoration(
                         hintText: "Email",
-                        fillColor: Color(0xFFD4D4D4),
+                        fillColor: Constants.GREY,
                         filled: true,
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
@@ -189,7 +189,7 @@ class _SignUpState extends State<SignUpWidget> {
                     controller: passwordController,
                     decoration: InputDecoration(
                         hintText: "Password",
-                        fillColor: Color(0xFFD4D4D4),
+                        fillColor: Constants.GREY,
                         filled: true,
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
@@ -227,7 +227,7 @@ class _SignUpState extends State<SignUpWidget> {
                     controller: confirmPasswordController,
                     decoration: InputDecoration(
                         hintText: "Confirm Password",
-                        fillColor: Color(0xFFD4D4D4),
+                        fillColor: Constants.GREY,
                         filled: true,
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
@@ -284,8 +284,8 @@ class _SignUpState extends State<SignUpWidget> {
                             TextStyle(fontFamily: 'Montserrat', fontSize: 16),
                       ),
                       style: ElevatedButton.styleFrom(
-                          primary: Color(0xfff67280),
-                          onPrimary: Color(0xffEEEEEE),
+                          primary: Constants.BUTTON_PRIMARY,
+                          onPrimary: Constants.LIGHT,
                           minimumSize: Size(238, 43),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
@@ -301,12 +301,12 @@ class _SignUpState extends State<SignUpWidget> {
                     child: RichText(
                       text: TextSpan(
                         text: "Already have an account?",
-                        style:
-                            TextStyle(fontSize: 15, color: Color(0xff222831)),
+                        style: TextStyle(fontSize: 15, color: Constants.BLACK),
                         children: [
                           TextSpan(
                               text: ' Log In',
-                              style: TextStyle(color: Color(0xff3F72AF)),
+                              style:
+                                  TextStyle(color: Constants.BUTTON_SECONDARY),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () => {
                                       Navigator.push(

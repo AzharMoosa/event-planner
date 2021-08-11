@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 const String APP_NAME = "Event Planner";
 const String WELCOME_TITLE = 'Welcome To\n $APP_NAME';
 const String API_URL_LOGIN = "http://localhost:5000/api/users/login";
@@ -21,3 +23,8 @@ const String API_URL_UPLOAD = "http://localhost:5000/api/upload";
 const String API_URL_GET_IMAGE = "http://localhost:5000/api/upload/retrieve";
 const String ABOUT =
     "Struggling to find places to go? Discover a wide range of places such as restaurants, bars, activities and many more. Once you found a place to go, why not invite your friends? $APP_NAME allows you to easily create events, using places on the app or enter your own details, invite other users and also keep track of your invited events. See all events you are hosting, invited to and information about each event. The search functionality allows you to discover new places easily and gives you easy access to information about each place. Start discovering places today!";
+const Color BLACK = Color(0xff222831);
+const Color LIGHT = Color(0xffEEEEEE);
+const Color GREY = Color(0xFFD4D4D4);
+const Color BUTTON_PRIMARY = Color(0xfff67280);
+const Color BUTTON_SECONDARY = Color(0xff3F72AF);

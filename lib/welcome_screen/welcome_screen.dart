@@ -18,7 +18,7 @@ class WelcomeScreen extends StatelessWidget {
                 child: Text(
                   Constants.WELCOME_TITLE,
                   style: TextStyle(
-                      color: Color(0xff222831),
+                      color: Constants.BLACK,
                       fontSize: 35,
                       fontWeight: FontWeight.w700),
                   textAlign: TextAlign.center,
@@ -47,7 +47,7 @@ class WelcomeScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xff222831)),
+                            color: Constants.BLACK),
                       ))
                 ])),
           ],
@@ -74,7 +74,7 @@ class WelcomeScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xff222831)),
+                            color: Constants.BLACK),
                       ))
                 ])),
           ],
@@ -101,7 +101,7 @@ class WelcomeScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xff222831)),
+                            color: Constants.BLACK),
                       ))
                 ])),
           ],
@@ -123,8 +123,8 @@ class WelcomeScreen extends StatelessWidget {
                     style: TextStyle(fontFamily: 'Montserrat', fontSize: 16),
                   ),
                   style: ElevatedButton.styleFrom(
-                      primary: Color(0xfff67280),
-                      onPrimary: Color(0xffEEEEEE),
+                      primary: Constants.BUTTON_PRIMARY,
+                      onPrimary: Constants.LIGHT,
                       minimumSize: Size(238, 43),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12.0),
