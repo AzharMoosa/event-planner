@@ -113,12 +113,14 @@ class _SearchScreenState extends State<SearchScreenWidget> {
               child: _searchResult.length != 0 || controller.text.isNotEmpty
                   ? SingleChildScrollView(
                       child: Container(
-                          margin: const EdgeInsets.only(
-                              top: 10, right: 50, left: 50),
+                          margin: const EdgeInsets.only(top: 10),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               for (var place in _searchResult)
                                 Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     InkWell(
                                       onTap: () {
@@ -139,9 +141,6 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                               width: 320,
                                               height: 160,
                                               decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          15.0),
                                                   image: DecorationImage(
                                                       colorFilter:
                                                           ColorFilter.mode(
@@ -209,12 +208,15 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                   : !loading && _placeList.length > 0
                       ? SingleChildScrollView(
                           child: Container(
-                              margin: const EdgeInsets.only(
-                                  top: 10, right: 50, left: 50),
+                              margin: const EdgeInsets.only(top: 10),
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   for (var place in _placeList.sublist(0, 3))
                                     Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         InkWell(
                                             onTap: () {
@@ -235,9 +237,6 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                                     width: 320,
                                                     height: 160,
                                                     decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(15.0),
                                                         image: DecorationImage(
                                                             colorFilter:
                                                                 ColorFilter.mode(

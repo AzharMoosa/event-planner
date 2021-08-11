@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                   return SafeArea(
                       child: Container(
                           margin: const EdgeInsets.only(
-                              top: 50, right: 50, left: 50),
+                              top: 20, right: 50, left: 50),
                           child: Column(
                             children: [
                               Container(
@@ -142,12 +142,14 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                   else {
                     return SingleChildScrollView(
                         child: Container(
-                            margin: const EdgeInsets.only(
-                                top: 10, right: 50, left: 50),
+                            margin: const EdgeInsets.only(top: 10),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 for (var place in snapshot.data!.sublist(0, 3))
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       InkWell(
                                           onTap: () {
@@ -168,9 +170,6 @@ class _HomeScreenState extends State<HomeScreenWidget> {
                                                   width: 320,
                                                   height: 160,
                                                   decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15.0),
                                                       image: DecorationImage(
                                                           colorFilter:
                                                               new ColorFilter

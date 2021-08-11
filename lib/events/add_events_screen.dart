@@ -127,7 +127,7 @@ class _AddEventsScreenState extends State<AddEventsScreenWidget> {
           ? SafeArea(
               child: SingleChildScrollView(
                   child: Container(
-              margin: const EdgeInsets.only(top: 30, left: 50, right: 50),
+              margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
               child: Column(
                 children: [
                   Row(

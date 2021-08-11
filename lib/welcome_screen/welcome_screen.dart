@@ -25,86 +25,80 @@ class WelcomeScreen extends StatelessWidget {
                 ))
           ],
         ),
-        Row(
-          children: [
-            Container(
-                margin: const EdgeInsets.only(
-                  top: 70,
-                  left: 38,
-                ),
-                child: Row(children: [
-                  Icon(
-                    Icons.schedule,
-                    size: 80,
+        Container(
+          margin: const EdgeInsets.only(top: 60, left: 20),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Icon(
+                Icons.schedule,
+                size: 80,
+              ),
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  child: Text(
+                    'Schedule Meet Ups & Events',
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w700,
+                        color: Constants.BLACK),
                   ),
-                  Container(
-                      margin: const EdgeInsets.only(
-                        left: 30,
-                      ),
-                      child: Text(
-                        'Schedule Meet Ups\n& Events',
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.w700,
-                            color: Constants.BLACK),
-                      ))
-                ])),
-          ],
+                ),
+              )
+            ],
+          ),
         ),
-        Row(
-          children: [
-            Container(
-                margin: const EdgeInsets.only(
-                  top: 70,
-                  left: 38,
-                ),
-                child: Row(children: [
-                  Icon(
-                    Icons.person,
-                    size: 80,
+        Container(
+          margin: const EdgeInsets.only(top: 60, left: 20),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Icon(
+                Icons.person,
+                size: 80,
+              ),
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  child: Text(
+                    'Send & Receive Invites To Various\nEvents',
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w700,
+                        color: Constants.BLACK),
                   ),
-                  Container(
-                      margin: const EdgeInsets.only(
-                        left: 30,
-                      ),
-                      child: Text(
-                        'Send & Receive\nInvites To Various\nEvents',
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.w700,
-                            color: Constants.BLACK),
-                      ))
-                ])),
-          ],
+                ),
+              )
+            ],
+          ),
         ),
-        Row(
-          children: [
-            Container(
-                margin: const EdgeInsets.only(
-                  top: 70,
-                  left: 38,
-                ),
-                child: Row(children: [
-                  Icon(
-                    Icons.groups,
-                    size: 80,
+        Container(
+          margin: const EdgeInsets.only(top: 60, left: 20),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Icon(
+                Icons.person,
+                size: 80,
+              ),
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  child: Text(
+                    'Easily Plan Group Meetups',
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w700,
+                        color: Constants.BLACK),
                   ),
-                  Container(
-                      margin: const EdgeInsets.only(
-                        left: 30,
-                      ),
-                      child: Text(
-                        'Easily Plan Group\nMeetups',
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.w700,
-                            color: Constants.BLACK),
-                      ))
-                ])),
-          ],
+                ),
+              )
+            ],
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

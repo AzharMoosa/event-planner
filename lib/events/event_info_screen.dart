@@ -48,7 +48,7 @@ class _EventInfoScreenState extends State<EventInfoScreenWidget> {
       ),
       body: SingleChildScrollView(
           child: Container(
-        margin: const EdgeInsets.only(top: 30, left: 50, right: 50, bottom: 30),
+        margin: const EdgeInsets.only(top: 30, left: 40, bottom: 30),
         child: Column(
           children: [
             Row(

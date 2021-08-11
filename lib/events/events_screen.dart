@@ -43,7 +43,10 @@ class _EventsScreenState extends State<EventsScreenWidget> {
     return Scaffold(
         body: SafeArea(
             child: Container(
-      margin: const EdgeInsets.only(top: 30, left: 50, right: 50),
+      margin: const EdgeInsets.only(
+        top: 30,
+        left: 40,
+      ),
       child: Column(
         children: [
           Row(
