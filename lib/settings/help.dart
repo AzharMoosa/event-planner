@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:going_out_planner/assets/constants.dart' as Constants;
+import 'package:event_planner/assets/constants.dart' as Constants;
 import 'package:flutter_email_sender/flutter_email_sender.dart';
-import 'package:going_out_planner/main_menu/main_menu.dart';
+import 'package:event_planner/main_menu/main_menu.dart';
 
 class HelpWidget extends StatefulWidget {
   const HelpWidget({Key? key}) : super(key: key);

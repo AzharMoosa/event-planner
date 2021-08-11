@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:going_out_planner/models/users_list_model.dart';
-import 'package:going_out_planner/settings/admin_page.dart';
-import 'package:going_out_planner/assets/constants.dart' as Constants;
+import 'package:event_planner/models/users_list_model.dart';
+import 'package:event_planner/settings/admin_page.dart';
+import 'package:event_planner/assets/constants.dart' as Constants;
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:going_out_planner/models/user_model.dart';
+import 'package:event_planner/models/user_model.dart';
 
 class UserInfoWidget extends StatefulWidget {
   final UsersList user;

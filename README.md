@@ -1,4 +1,4 @@
-# going_out_planner
+# Event Planner
 
 A new Flutter project.
 

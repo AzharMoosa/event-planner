@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:going_out_planner/events/event_info_screen.dart';
-import 'package:going_out_planner/events/notifications_screen.dart';
-import 'package:going_out_planner/models/events_list_model.dart';
+import 'package:event_planner/events/event_info_screen.dart';
+import 'package:event_planner/events/notifications_screen.dart';
+import 'package:event_planner/models/events_list_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:going_out_planner/assets/constants.dart' as Constants;
+import 'package:event_planner/assets/constants.dart' as Constants;
 import 'package:http/http.dart' as http;
 
 class EventsScreenWidget extends StatefulWidget {

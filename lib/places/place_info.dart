@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:going_out_planner/models/places_model.dart';
+import 'package:event_planner/models/places_model.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:going_out_planner/assets/constants.dart' as Constants;
+import 'package:event_planner/assets/constants.dart' as Constants;
 
 class PlaceInfoScreenWidget extends StatefulWidget {
   final PlaceModel place;

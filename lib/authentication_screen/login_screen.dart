@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:going_out_planner/assets/constants.dart' as Constants;
-import 'package:going_out_planner/authentication_screen/signup_screen.dart';
-import 'package:going_out_planner/models/user_model.dart';
+import 'package:event_planner/assets/constants.dart' as Constants;
+import 'package:event_planner/authentication_screen/signup_screen.dart';
+import 'package:event_planner/models/user_model.dart';
 import '../main_menu/main_menu.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.going_out_planner">
+    package="com.example.event_planner">
     <queries>
     <intent>
       <action android:name="android.intent.action.SENDTO" />
@@ -7,7 +7,7 @@
     </intent>
   </queries>
    <application
-        android:label="going_out_planner"
+        android:label="event_planner"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

@@ -1,15 +1,15 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:going_out_planner/models/user_model.dart';
-import 'package:going_out_planner/settings/about.dart';
-import 'package:going_out_planner/settings/admin_page.dart';
-import 'package:going_out_planner/settings/help.dart';
-import 'package:going_out_planner/settings/manage_events.dart';
-import 'package:going_out_planner/settings/profile_settings.dart';
-import 'package:going_out_planner/welcome_screen/welcome_screen.dart';
+import 'package:event_planner/models/user_model.dart';
+import 'package:event_planner/settings/about.dart';
+import 'package:event_planner/settings/admin_page.dart';
+import 'package:event_planner/settings/help.dart';
+import 'package:event_planner/settings/manage_events.dart';
+import 'package:event_planner/settings/profile_settings.dart';
+import 'package:event_planner/welcome_screen/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:going_out_planner/assets/constants.dart' as Constants;
+import 'package:event_planner/assets/constants.dart' as Constants;
 import 'package:http/http.dart' as http;
 
 class SettingsScreenWidget extends StatefulWidget {

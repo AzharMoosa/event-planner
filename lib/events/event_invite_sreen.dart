@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:going_out_planner/main_menu/main_menu.dart';
-import 'package:going_out_planner/models/event_model.dart';
-import 'package:going_out_planner/models/events_list_model.dart';
+import 'package:event_planner/main_menu/main_menu.dart';
+import 'package:event_planner/models/event_model.dart';
+import 'package:event_planner/models/events_list_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:going_out_planner/assets/constants.dart' as Constants;
+import 'package:event_planner/assets/constants.dart' as Constants;
 import 'package:http/http.dart' as http;
 
 class EventInviteScreenWidget extends StatefulWidget {

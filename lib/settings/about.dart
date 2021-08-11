@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:going_out_planner/assets/constants.dart' as Constants;
+import 'package:event_planner/assets/constants.dart' as Constants;
 
 class AboutWidget extends StatefulWidget {
   const AboutWidget({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 {
-    "name": "going_out_planner",
-    "short_name": "going_out_planner",
+    "name": "event_planner",
+    "short_name": "event_planner",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

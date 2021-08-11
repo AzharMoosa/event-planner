@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:going_out_planner/admin/admin_places_info.dart';
-import 'package:going_out_planner/admin/admin_user_info.dart';
-import 'package:going_out_planner/assets/constants.dart' as Constants;
+import 'package:event_planner/admin/admin_places_info.dart';
+import 'package:event_planner/admin/admin_user_info.dart';
+import 'package:event_planner/assets/constants.dart' as Constants;
 
 class AdminPageWidget extends StatefulWidget {
   const AdminPageWidget({Key? key}) : super(key: key);

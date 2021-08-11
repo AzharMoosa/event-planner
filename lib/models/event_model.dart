@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-import 'package:going_out_planner/models/places_model.dart';
+import 'package:event_planner/models/places_model.dart';
 
 EventModel eventFromJson(String str) => EventModel.fromJson(json.decode(str));
 

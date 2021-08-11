@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:going_out_planner/authentication_screen/login_screen.dart';
-import 'package:going_out_planner/main_menu/main_menu.dart';
-import 'package:going_out_planner/models/user_model.dart';
+import 'package:event_planner/authentication_screen/login_screen.dart';
+import 'package:event_planner/main_menu/main_menu.dart';
+import 'package:event_planner/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-import 'package:going_out_planner/assets/constants.dart' as Constants;
+import 'package:event_planner/assets/constants.dart' as Constants;
 
 class SignUpWidget extends StatefulWidget {
   const SignUpWidget({Key? key}) : super(key: key);

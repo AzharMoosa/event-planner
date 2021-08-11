@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:going_out_planner/events/add_events_screen.dart';
-import 'package:going_out_planner/events/events_screen.dart';
-import 'package:going_out_planner/home/home_screen.dart';
-import 'package:going_out_planner/search/search_screen.dart';
-import 'package:going_out_planner/settings/settings_screen.dart';
-import 'package:going_out_planner/assets/constants.dart' as Constants;
+import 'package:event_planner/events/add_events_screen.dart';
+import 'package:event_planner/events/events_screen.dart';
+import 'package:event_planner/home/home_screen.dart';
+import 'package:event_planner/search/search_screen.dart';
+import 'package:event_planner/settings/settings_screen.dart';
+import 'package:event_planner/assets/constants.dart' as Constants;
 
 class MainMenuWidget extends StatefulWidget {
   const MainMenuWidget({Key? key}) : super(key: key);

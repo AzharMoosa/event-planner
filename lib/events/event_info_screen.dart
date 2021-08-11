@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:going_out_planner/events/invite_event_screen.dart';
-import 'package:going_out_planner/models/events_list_model.dart';
-import 'package:going_out_planner/models/user_model.dart';
+import 'package:event_planner/events/invite_event_screen.dart';
+import 'package:event_planner/models/events_list_model.dart';
+import 'package:event_planner/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:going_out_planner/assets/constants.dart' as Constants;
+import 'package:event_planner/assets/constants.dart' as Constants;
 
 class EventInfoScreenWidget extends StatefulWidget {
   final Event event;
