@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
@@ -11,9 +10,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:going_out_planner/assets/constants.dart' as Constants;
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:image_picker/image_picker.dart';
 import 'dart:async';
-import 'package:http_parser/http_parser.dart';
 
 enum ImageSourceType { gallery, camera }
 
@@ -25,35 +22,10 @@ class CreatePlaceWidget extends StatefulWidget {
   _CreatePlaceState createState() => _CreatePlaceState(place);
 }
 
-Future<String> _uploadImage(XFile file) async {
-  try {
-    Dio dio = new Dio();
-    var fileName = file.path.split('/').last;
-
-    final formData = FormData.fromMap({
-      "image": await MultipartFile.fromFile(
-        file.path,
-        filename: fileName,
-        contentType: new MediaType("image", "jpeg"),
-      ),
-    });
-
-    final response = await dio.post(
-      Constants.API_URL_UPLOAD,
-      data: formData,
-      options: Options(contentType: 'multipart/form-data'),
-    );
-    return response.data;
-  } on DioError catch (e) {
-    return e.error;
-  }
-}
-
-Future<Null> _updatePlace(String name, String image, String ratings,
-    String info, Map<String, dynamic> location, String id) async {
+Future<Null> _updatePlace(String name, String ratings, String info,
+    Map<String, dynamic> location, String id) async {
   final Map data = {
     'name': name,
-    "image": image,
     "ratings": double.parse(ratings),
     "info": info,
     "location": location,
@@ -94,12 +66,9 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
     countryController.text = placeInfo.location.country;
     ratingsController.text = placeInfo.rating.toString();
     infoController.text = placeInfo.info;
-    imagePicker = new ImagePicker();
   }
 
   var _image;
-  var imagePicker;
-  var type = ImageSourceType.gallery;
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +84,7 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
         body: SafeArea(
             child: SingleChildScrollView(
                 child: Container(
-          margin: const EdgeInsets.only(top: 10, left: 50, right: 50),
+          margin: const EdgeInsets.only(top: 10, left: 30, right: 30),
           child: Column(
             children: [
               Row(
@@ -389,44 +358,6 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      margin: const EdgeInsets.only(top: 20.0),
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          var source = type == ImageSourceType.camera
-                              ? ImageSource.camera
-                              : ImageSource.gallery;
-                          XFile image = await imagePicker.pickImage(
-                              source: source,
-                              imageQuality: 50,
-                              preferredCameraDevice: CameraDevice.front);
-
-                          // Upload Image
-                          var imagePath = await _uploadImage(image);
-
-                          setState(() {
-                            _image = File(image.path);
-                            imageController.text = imagePath;
-                          });
-                        },
-                        child: Text(
-                          'Select Image'.toUpperCase(),
-                          style:
-                              TextStyle(fontFamily: 'Montserrat', fontSize: 13),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                            primary: Constants.BUTTON_PRIMARY,
-                            onPrimary: Constants.LIGHT,
-                            minimumSize: Size(238, 43),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12.0),
-                            )),
-                      ))
-                ],
-              ),
-              Row(
                 children: [
                   Container(
                       margin: const EdgeInsets.only(top: 20),
@@ -573,12 +504,12 @@ class _CreatePlaceState extends State<CreatePlaceWidget> {
                                   city: city,
                                   country: country)
                               .toJson();
-                          String image = imageController.text;
+
                           String ratings = ratingsController.text;
                           String info = infoController.text;
 
-                          await _updatePlace(name, image, ratings, info,
-                              location, placeInfo.id);
+                          await _updatePlace(
+                              name, ratings, info, location, placeInfo.id);
 
                           Navigator.push(
                               context,
