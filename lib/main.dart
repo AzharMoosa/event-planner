@@ -28,10 +28,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Going Out Planner',
         theme: ThemeData(
             scaffoldBackgroundColor: Color(0xffEEEEEE),
             fontFamily: 'Montserrat'),
-        home: logged ? WelcomeScreen() : MainMenuWidget());
+        home: !logged ? WelcomeScreen() : MainMenuWidget());
   }
 }

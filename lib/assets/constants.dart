@@ -1,5 +1,5 @@
-const String APP_NAME = "Going Out Planner";
-const String WELCOME_TITLE = 'Welcome To\nNAME';
+const String APP_NAME = "Event Planner";
+const String WELCOME_TITLE = 'Welcome To\n $APP_NAME';
 const String API_URL_LOGIN = "http://localhost:5000/api/users/login";
 const String API_URL_REGISTER = "http://localhost:5000/api/users";
 const String API_URL_USER_INFO = "http://localhost:5000/api/users/info";
