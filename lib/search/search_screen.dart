@@ -183,7 +183,16 @@ class _SearchScreenState extends State<SearchScreenWidget> {
                                                                       .only(
                                                                   top: 10),
                                                           child: Text(
-                                                              '${place.location.address}, ${place.location.postalCode}, ${place.location.city}, ${place.location.country}',
+                                                              '${place.location.address}, ${place.location.postalCode}, ${place.location.city}, ${place.location.country}'.substring(
+                                                                  0,
+                                                                  '${place.location.address}, ${place.location.postalCode}, ${place.location.city}, ${place.location.country}'
+                                                                              .length <=
+                                                                          Constants
+                                                                              .CUT_OFF
+                                                                      ? '${place.location.address}, ${place.location.postalCode}, ${place.location.city}, ${place.location.country}'
+                                                                          .length
+                                                                      : Constants
+                                                                          .CUT_OFF),
                                                               textAlign:
                                                                   TextAlign
                                                                       .start,

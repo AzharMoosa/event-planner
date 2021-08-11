@@ -47,3 +47,4 @@ const Color PRIMARY = Color(0xfff67280);
 const Color SECONDARY = Color(0xff3F72AF);
 const Color BUTTON_PRIMARY = Color(0xfff67280);
 const Color BUTTON_SECONDARY = Color(0xff3F72AF);
+const int CUT_OFF = 35;

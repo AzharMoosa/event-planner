@@ -47,7 +47,7 @@ class Event {
   String name;
   String description;
   String date;
-  String place;
+  dynamic place;
   dynamic limit;
   String hostUser;
   DateTime createdAt;
