@@ -7,7 +7,7 @@
     </intent>
   </queries>
    <application
-        android:label="event_planner"
+        android:label="Event Planner"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
