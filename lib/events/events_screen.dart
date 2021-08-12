@@ -84,60 +84,76 @@ class _EventsScreenState extends State<EventsScreenWidget> {
                     return Center(child: Text('Error: ${snapshot.error}'));
                   else {
                     return SingleChildScrollView(
-                        child: Container(
-                            margin: const EdgeInsets.only(top: 20),
-                            child: snapshot.data!.events.length == 0
-                                ? Column(children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'No Events Found',
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500),
+                        child: snapshot.data != null
+                            ? Container(
+                                margin: const EdgeInsets.only(top: 20),
+                                child: snapshot.data!.events.length == 0
+                                    ? Column(children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              'No Events Found',
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w500),
+                                            )
+                                          ],
                                         )
-                                      ],
-                                    )
-                                  ])
-                                : Column(children: [
-                                    for (var event in snapshot.data!.events)
-                                      Row(
-                                        children: [
-                                          Container(
-                                              margin: const EdgeInsets.only(
-                                                  top: 20),
-                                              child: ElevatedButton(
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                          primary: Constants
-                                                              .SECONDARY,
-                                                          onPrimary:
-                                                              Constants.LIGHT,
-                                                          minimumSize:
-                                                              Size(316, 40),
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
-                                                          )),
-                                                  onPressed: () {
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                EventInfoScreenWidget(
-                                                                    event:
-                                                                        event)));
-                                                  },
-                                                  child: Container(
-                                                      child: Row(children: [
-                                                    Text(event.name),
-                                                  ])))),
-                                        ],
-                                      ),
-                                  ])));
+                                      ])
+                                    : Column(children: [
+                                        for (var event in snapshot.data!.events)
+                                          Row(
+                                            children: [
+                                              Container(
+                                                  margin: const EdgeInsets.only(
+                                                      top: 20),
+                                                  child: ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                              primary: Constants
+                                                                  .SECONDARY,
+                                                              onPrimary:
+                                                                  Constants
+                                                                      .LIGHT,
+                                                              minimumSize:
+                                                                  Size(316, 40),
+                                                              shape:
+                                                                  RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            12.0),
+                                                              )),
+                                                      onPressed: () {
+                                                        Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder: (context) =>
+                                                                    EventInfoScreenWidget(
+                                                                        event:
+                                                                            event)));
+                                                      },
+                                                      child: Container(
+                                                          child: Row(children: [
+                                                        Text(event.name),
+                                                      ])))),
+                                            ],
+                                          ),
+                                      ]))
+                            : Container(
+                                margin: const EdgeInsets.only(top: 20),
+                                child: Column(children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'No Events Found',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500),
+                                      )
+                                    ],
+                                  )
+                                ])));
                   }
                 }
               })

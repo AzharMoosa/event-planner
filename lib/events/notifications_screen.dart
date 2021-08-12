@@ -57,54 +57,73 @@ class _NotificationsScreenState extends State<NotificationsScreenWidget> {
                     margin: const EdgeInsets.only(top: 200), child: spinkit);
               } else {
                 return SingleChildScrollView(
-                    child: Container(
-                        margin: const EdgeInsets.only(top: 20, left: 50),
-                        child: snapshot.data!.events.length == 0
-                            ? Column(children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      'No Invites',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500),
+                    child: snapshot.data != null
+                        ? Container(
+                            margin: const EdgeInsets.only(top: 20, left: 50),
+                            child: snapshot.data!.events.length == 0
+                                ? Column(children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'No Invites',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500),
+                                        )
+                                      ],
                                     )
-                                  ],
+                                  ])
+                                : Column(children: [
+                                    for (var event in snapshot.data!.events)
+                                      Row(
+                                        children: [
+                                          Container(
+                                              margin: const EdgeInsets.only(
+                                                  top: 20),
+                                              child: ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                          primary: Constants
+                                                              .BUTTON_SECONDARY,
+                                                          onPrimary:
+                                                              Constants.LIGHT,
+                                                          minimumSize:
+                                                              Size(316, 40),
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12.0),
+                                                          )),
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                EventInviteScreenWidget(
+                                                                    event:
+                                                                        event)));
+                                                  },
+                                                  child: Container(
+                                                      child: Row(children: [
+                                                    Text(event.name),
+                                                  ])))),
+                                        ],
+                                      ),
+                                  ]))
+                        : Container(
+                            margin: const EdgeInsets.only(top: 20, left: 50),
+                            child: Row(
+                              children: [
+                                Text(
+                                  'No Invites',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500),
                                 )
-                              ])
-                            : Column(children: [
-                                for (var event in snapshot.data!.events)
-                                  Row(
-                                    children: [
-                                      Container(
-                                          margin:
-                                              const EdgeInsets.only(top: 20),
-                                          child: ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                  primary: Constants
-                                                      .BUTTON_SECONDARY,
-                                                  onPrimary: Constants.LIGHT,
-                                                  minimumSize: Size(316, 40),
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                  )),
-                                              onPressed: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            EventInviteScreenWidget(
-                                                                event: event)));
-                                              },
-                                              child: Container(
-                                                  child: Row(children: [
-                                                Text(event.name),
-                                              ])))),
-                                    ],
-                                  ),
-                              ])));
+                              ],
+                            )));
               }
             }));
   }

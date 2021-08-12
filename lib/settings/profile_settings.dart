@@ -223,6 +223,9 @@ class _ProfileSettingsState extends State<ProfileSettingsWidget> {
                           child: TextFormField(
                             style: TextStyle(fontSize: 20),
                             controller: passwordController,
+                            obscureText: true,
+                            enableSuggestions: false,
+                            autocorrect: false,
                             decoration: InputDecoration(
                                 labelText: "Password",
                                 fillColor: Constants.GREY,
@@ -259,6 +262,9 @@ class _ProfileSettingsState extends State<ProfileSettingsWidget> {
                           child: TextFormField(
                             style: TextStyle(fontSize: 20),
                             controller: confirmPasswordController,
+                            obscureText: true,
+                            enableSuggestions: false,
+                            autocorrect: false,
                             decoration: InputDecoration(
                                 labelText: "Confirm Password",
                                 fillColor: Constants.GREY,
