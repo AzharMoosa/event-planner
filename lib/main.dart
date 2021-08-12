@@ -12,6 +12,7 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Event Planner',
       theme: ThemeData(
           scaffoldBackgroundColor: Constants.LIGHT, fontFamily: 'Montserrat'),

@@ -10,8 +10,8 @@ Welcome to Event Planner, an Android/iOS app created using Flutter where you can
 
 <p align="middle">
 <img src="screenshots/Home.png" width="32%" />
-<img src="screenshots/Events.png" width="32%" height=629/>
-<img src="screenshots/CreateEvents.png" width="32%" height=629/>
+<img src="screenshots/Events.png" width="32%" />
+<img src="screenshots/CreateEvents.png" width="32%" />
 </p>
 
 ## Getting Started
