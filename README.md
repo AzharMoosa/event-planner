@@ -22,7 +22,7 @@ Welcome to Event Planner, an Android/iOS app created using Flutter where you can
 
 ### Installing App
 
-- [Install App From Google Playstore]()
+- [Install App From Google Playstore](https://play.google.com/store/apps/details?id=com.app.event_planner)
 
 ## Key Features
 
