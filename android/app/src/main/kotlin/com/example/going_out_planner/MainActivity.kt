@@ -1,4 +1,4 @@
-package com.example.event_planner
+package com.app.event_planner
 
 import io.flutter.embedding.android.FlutterActivity
 
